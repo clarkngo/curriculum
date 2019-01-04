@@ -6,6 +6,7 @@
 
 HTML
 CSS
+Ruby
 JavaScript
 
 ### Server Side Scripting / Coding - Server Side Scripting is the type of code that is executed or interpreted by the web server.
@@ -15,6 +16,10 @@ Ruby on Rails
 
 PostgreSQL
 
+### Cloud Hosting
+
+Heroku
+
 ### Description
 
 This project aims to solve the problem of proposing a new curriculum in computer science, to replace an old curriculum.
@@ -23,6 +28,11 @@ This project aims to solve the problem of proposing a new curriculum in computer
 
 https://www.figma.com/file/CPh3L1tuW8t70gH315hQLhje/Curriculum?node-id=0%3A1
 
+
+### User Story
+
+1. A user should be able to create an account
+2. A user should be able to comment on a course
 
 
 Requirements (scoping what to do deliver) 
