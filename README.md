@@ -188,38 +188,38 @@ PostgreSQL
 #### Schema
 
 ##### Table Courses
-string - name
-text - description
-integer - user_id
-datetime - created_at
-datetime - updated_at
-index - user_id, name: index_courses_on_user_id
+* string - name
+* text - description
+* integer - user_id
+* datetime - created_at
+* datetime - updated_at
+* index - user_id, name: index_courses_on_user_id
 
 ##### Table Comments
-text - message
-string - rating
-integer - user_id
-datetime - created_at
-datetime - updated_at
-index - course_id, name: index_comments_on_course_id
-index - user_id, course_id, name: index_comments_on_user_id_and_course_id
+* text - message
+* string - rating
+* integer - user_id
+* datetime - created_at
+* datetime - updated_at
+* index - course_id, name: index_comments_on_course_id
+* index - user_id, course_id, name: index_comments_on_user_id_and_course_id
 
 ##### Table Users (generate by Devise Gem)
-string - email
-string - password
-string - reset_password_token
-datetime - reset_password_sent_at
-datetime - remember_created_at
-datetime - created_at
-datetime - updated_at
-index - email, name: index_users_on_email
-index - reset_password_token, name: index_users_on_reset_password_token 
+* string - email
+* string - password
+* string - reset_password_token
+* datetime - reset_password_sent_at
+* datetime - remember_created_at
+* datetime - created_at
+* datetime - updated_at
+* index - email, name: index_users_on_email
+* index - reset_password_token, name: index_users_on_reset_password_token 
 
 ### Ruby Gems
-BootStrap
-Simple Form
-Devise
-RankedModel???
+* BootStrap
+* Simple Form
+* Devise
+* RankedModel???
 
 ### Cloud Hosting
 
