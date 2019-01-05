@@ -124,3 +124,184 @@ curriculum is released under the [MIT license](https://mit-license.org).
 ## Copyright
 
 copyright:: (c) Copyright 2018 Clark Jason Ngo. All Rights Reserved.
+
+
+# ---
+
+# Items in Planning Phase and Requirements Gathering
+
+
+Requirements (scoping what to do deliver) 
+
+
+scope creep (when people start adding stuff outside the requirements)
+
+what components needed
+
+workflow diacourses, how to interact with the system
+
+wireframes
+
+high-level description on the project
+
+repo and stuff
+
+functional requirements, use case
+
+high-level architecture (in Readme)
+
+build these architectural pieces = components
+
+database, schema, API, well-defined endpoint
+
+tests, automated testing and manual testing, do both
+
+write documentation, how can someone use the system
+
+publish in GitHub
+
+
+
+# ---
+
+# Planning Phase and Requirements Gathering
+
+## Scope
+
+## Technologies
+### Client Side Scripting / Coding - Client Side Scripting is the type of code that is executed or interpreted by browsers.
+
+
+HTML
+CSS
+Ruby
+JavaScript
+BootStrap
+
+### Server Side Scripting / Coding - Server Side Scripting is the type of code that is executed or interpreted by the web server.
+Ruby on Rails
+
+### Database
+
+PostgreSQL
+
+#### Schema
+
+##### Table Courses
+string - name
+text - description
+integer - user_id
+datetime - created_at
+datetime - updated_at
+index - user_id, name: index_courses_on_user_id
+
+##### Table Comments
+text - message
+string - rating
+integer - user_id
+datetime - created_at
+datetime - updated_at
+index - course_id, name: index_comments_on_course_id
+index - user_id, course_id, name: index_comments_on_user_id_and_course_id
+
+##### Table Users (generate by Devise Gem)
+string - email
+string - password
+string - reset_password_token
+datetime - reset_password_sent_at
+datetime - remember_created_at
+datetime - created_at
+datetime - updated_at
+index - email, name: index_users_on_email
+index - reset_password_token, name: index_users_on_reset_password_token 
+
+### Ruby Gems
+BootStrap
+Simple Form
+Devise
+RankedModel???
+
+### Cloud Hosting
+
+Heroku
+
+### Description
+
+This project aims to solve the problem of proposing a new curriculum in computer science, to replace an old curriculum.
+
+### Wireframe
+
+https://www.figma.com/file/CPh3L1tuW8t70gH315hQLhje/Curriculum?node-id=0%3A1
+
+
+### User Story
+
+1. A user should be able to create an account
+2. A user should be able to create a course
+3. A user should be able to edit a course
+4. A user should be able to destroy a course
+5. A user should be able to comment on a course
+
+### Features
+
+Drop and drop functionality of reording courses
+
+### TDD
+
+#### describe "course#index action"
+
+it "should succesfully show the page"
+
+
+#### describe "course#show action"
+it "should successfully show the page if the course is found"
+
+it "should return a 404 error if the course is not found"
+
+#### describe "course#new action"
+
+it "should require users to be logged in"
+
+it "should successfully show the new form"
+
+#### describe "course#create action"
+it "should require users to be logged in"
+
+it "should successfully create a new course in our database"
+
+it "should properly deal with validation errors"
+
+#### describe "course#edit action"
+it "shouldn't let a user who did not create the course edit a course"
+
+it "shouldn't let unauthenticated users edit a course"
+
+it "should successfully show the edit form if the course is found"
+
+it "should return a 404 error message if the course is not found"
+
+#### describe "course#update action"
+
+it "shouldn't let users who didn't create the course update it"
+
+it "shouldn't let unauthenticated users update a course"
+
+it "should allow users to successfully update courses"
+
+it "should have http 404 error if the course cannot be found"
+
+it "should render the edit form with an http status of unprocessable_entity"
+
+#### describe "courses#destroy action"
+
+it "shouldn't allow users who didn't create the course to destroy it" do
+
+
+it "shouldn't let unauthenticated users destroy a course" do
+
+
+it "should allow a user to destroy courses" do
+
+
+it "should return a 404 message if we cannot find a course with the id that is specified" do
+
