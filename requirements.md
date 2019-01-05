@@ -32,8 +32,10 @@ https://www.figma.com/file/CPh3L1tuW8t70gH315hQLhje/Curriculum?node-id=0%3A1
 ### User Story
 
 1. A user should be able to create an account
-2. A user should be able to comment on a course
+2. A user should be able to suggest a course
+3. A user should be able to comment on a course
 
+---
 
 Requirements (scoping what to do deliver) 
 
