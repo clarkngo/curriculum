@@ -239,14 +239,15 @@ https://www.figma.com/file/CPh3L1tuW8t70gH315hQLhje/Curriculum?node-id=0%3A1
 1. A user should be able to create an account
 2. A user should be able to create a course
 3. A user should be able to edit a course
-4. A user should be able to destroy a course
-5. A user should be able to comment on a course
+4. A user should be able to update a course
+5. A user should be able to destroy a course
+6. A user should be able to comment on a course
 
 ### Features
 
 Drop and drop functionality of reording courses
 
-### TDD
+### Test-Driven Development
 
 #### describe "course#index action"
 
@@ -304,4 +305,102 @@ it "should allow a user to destroy courses" do
 
 
 it "should return a 404 message if we cannot find a course with the id that is specified" do
+
+# SETUP INSTRUCTIONS
+
+## Build the App
+
+### Enable your Vagrant Environment
+
+### Create a Rails App with PostgreSQL as database
+
+At your terminal,
+
+```bash
+cd /vagrant/src
+```
+
+Create and name your app
+```
+rails new APP_NAME --database=postgresql
+```
+
+### Configure YML files
+
+Edit  `database.yml`
+
+After this line: `pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>`
+
+Add this code block:
+
+```
+username: postgres
+password: password
+host: localhost
+```
+
+After this line: `database: curriculum_production`
+
+Comment out this code block:
+
+```
+# username: APP_NAME
+# password: <%= ENV['FLIXTER_DATABASE_PASSWORD'] %>
+```
+
+### Creating the database
+
+Navigate to the project's folder
+
+```bash
+cd /vagrant/src/APP_NAME
+```
+
+Command to create database
+```bash
+rails db:create
+```
+
+### Start the server
+
+Test the rails app
+
+```bash
+rails server -b 0.0.0.0 -p 3000
+```
+
+## Pipeline
+
+### Setup Git - your local version control
+
+```bash
+git init
+git add --all
+git commit -am "Initial commit"
+```
+
+### Setup GitHub - your cloud version control
+
+Go to GitHub.com. Login & click on the green "New repository" button.
+
+```bash
+git remote add origin git@github.com:YOUR_GITHUB_USERNAME/APP_NAME.git
+git push -u origin master
+```
+
+### Deploying to Heroku - host your app in the cloud
+
+Deploy app in Heroku
+
+```bash
+heroku create APP_NAME-FIRST_NAME-LAST_NAME
+git push heroku master
+```
+
+See app URL here:
+
+```bash
+heroku apps:info
+```
+
 
