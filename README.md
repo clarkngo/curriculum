@@ -174,7 +174,6 @@ publish in GitHub
 
 HTML
 CSS
-Ruby
 JavaScript
 BootStrap
 
