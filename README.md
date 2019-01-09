@@ -317,7 +317,7 @@ it "should return a 404 message if we cannot find a course with the id that is s
 At your terminal,
 
 ```bash
-cd /vagrant/src
+cd/vagrant/src
 ```
 
 Create and name your app
