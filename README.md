@@ -345,7 +345,7 @@ Comment out this code block:
 
 ```
 # username: APP_NAME
-# password: <%= ENV['FLIXTER_DATABASE_PASSWORD'] %>
+# password: <%= ENV['APP_NAME_DATABASE_PASSWORD'] %>
 ```
 
 ### Creating the database
@@ -353,7 +353,7 @@ Comment out this code block:
 Navigate to the project's folder
 
 ```bash
-cd /vagrant/src/APP_NAME
+cd/vagrant/src/APP_NAME
 ```
 
 Command to create database
