@@ -133,12 +133,11 @@ copyright:: (c) Copyright 2018 Clark Jason Ngo. All Rights Reserved.
 
 Requirements (scoping what to do deliver) 
 
-
-scope creep (when people start adding stuff outside the requirements)
+Note: scope creep (when people start adding stuff outside the requirements)
 
 what components needed
 
-workflow diacourses, how to interact with the system
+workflow diagram, how to interact with the system
 
 wireframes
 
@@ -168,6 +167,8 @@ publish in GitHub
 
 ## Scope
 
+This App only provides users to suggest, comment and rate courses.
+
 ## Technologies
 ### Client Side Scripting / Coding - Client Side Scripting is the type of code that is executed or interpreted by browsers.
 
@@ -187,6 +188,10 @@ PostgreSQL
 #### Schema
 
 ##### Table Courses
+
+A Course has many comments
+A Course belongs to a user
+
 * string - name
 * text - description
 * integer - user_id
@@ -196,6 +201,10 @@ PostgreSQL
 
 ##### Table Comments
 * text - message
+
+A Comment has a Course
+A Comment belongs to a user
+
 * string - rating
 * integer - user_id
 * datetime - created_at
@@ -204,6 +213,10 @@ PostgreSQL
 * index - user_id, course_id, name: index_comments_on_user_id_and_course_id
 
 ##### Table Users (generate by Devise Gem)
+
+A User has many courses
+A User has many comments
+
 * string - email
 * string - password
 * string - reset_password_token
@@ -233,7 +246,9 @@ This project aims to solve the problem of proposing a new curriculum in computer
 https://www.figma.com/file/CPh3L1tuW8t70gH315hQLhje/Curriculum?node-id=0%3A1
 
 
-### User Story
+### Functional Requirements
+
+#### User Story
 
 1. A user should be able to create an account
 2. A user should be able to create a course
@@ -245,6 +260,56 @@ https://www.figma.com/file/CPh3L1tuW8t70gH315hQLhje/Curriculum?node-id=0%3A1
 ### Features
 
 Drop and drop functionality of reording courses
+
+### High-Level Architecture
+
+Soon! Image version
+
+#### User Interface
+
+Client requests (HTTP) Web Server
+
+Web Server forwards Dispatcher
+
+Dispatcher loads Controller
+
+Contoller renders Action View
+
+Contoller delegates Action WebServices
+
+Contoller delivers Action Mailer
+
+Contoller CRUDs Active Record
+
+Action View displays (HTML, CSS, JavaScript) to Client
+
+Action WebServices responds to Client
+
+Active Record responds to Controller
+
+Active Record queries Database (PostgreSQL)
+
+Database (PostgreSQL) responds with data or error to Active Record
+
+
+### Work Flow Diagram
+
+Soon! Image version
+
+Start
+
+Index Page
+
+on an existing course
+
+-> comments on a course
+
+if user is signed in, allow the comment (message and rating, suggest a Course???)
+
+else, flash error.
+
+
+
 
 ### Test-Driven Development
 
@@ -401,5 +466,3 @@ See app URL here:
 ```bash
 heroku apps:info
 ```
-
-
