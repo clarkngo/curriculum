@@ -37,6 +37,8 @@ publish in GitHub
 
 This App only provides users to suggest, comment and rate courses.
 
+User interaction through JavaScript and changes made are synced to the database using AJAX request.
+
 ## Technologies
 ### Client Side Scripting / Coding - Client Side Scripting is the type of code that is executed or interpreted by browsers.
 
@@ -45,6 +47,8 @@ HTML
 CSS
 JavaScript
 BootStrap
+jQuery UI
+AJAX
 
 ### Server Side Scripting / Coding - Server Side Scripting is the type of code that is executed or interpreted by the web server.
 Ruby on Rails
@@ -100,6 +104,14 @@ A User has many comments
 * Simple Form
 * Devise
 * RankedModel???
+* jQuery UI Rails `gem jquery-ui-rails` https://www.petefreitag.com/item/736.cfm
+
+jQuery UI Rails installation:
+Edit `app/assets/javascripts/application.js`
+Add at the bottom `//= require jquery-ui`
+Edit `app/assets/stylesheets/application.scss`
+Add `*= require jquery-ui` before ` */`
+
 
 ### Cloud Hosting
 
@@ -118,12 +130,13 @@ https://www.figma.com/file/CPh3L1tuW8t70gH315hQLhje/Curriculum?node-id=0%3A1
 
 #### User Story
 
-1. A user should be able to create an account
-2. A user should be able to create a course
-3. A user should be able to edit a course
-4. A user should be able to update a course
-5. A user should be able to destroy a course
-6. A user should be able to comment on a course
+* As a user, I can create an account
+* As a user, I can create a course
+* As a user, I can edit a course
+* As a user, I can update a course
+* As a user, I can destroy a course
+* As a user, I can comment on a course
+* As a user, I can reorder my courses with drag and drop
 
 ### Features
 
