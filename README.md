@@ -2,8 +2,9 @@
 
 This project aims to solve the problem of proposing a new curriculum in computer science, to replace an old curriculum.
 
-## Project Requirements
-https://github.com/clarkngo/curriculum/projects
+## View Project Requirements
+
+<a href="https://github.com/clarkngo/curriculum/projects">Project Requirements</a>
 
 ## Soon!
 
