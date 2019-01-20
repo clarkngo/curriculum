@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user signup process", type: :feature do
   scenario 'user signup' do
-    visit '/users/sign_up'
+    visit root_path
 
     click_button 'Sign up'
     fill_in 'Email', with: 'someone@example.com'
