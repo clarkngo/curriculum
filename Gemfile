@@ -8,6 +8,8 @@ gem 'bootstrap',               '~> 4.2.1'
 
 gem 'coffee-rails',            '~> 4.2'
 
+gem 'devise',                  '~> 4.5'                  
+
 gem 'rails',                   '~> 5.2.2'
 
 gem 'jbuilder',                '~> 2.5'
