@@ -1,0 +1,15 @@
+<br />
+<div class="row">
+<% @courses.each do |course| %>
+  <div class="card text-white bg-info mb-3 col-md-3 offset-md-1" style="max-width: 18rem;">
+  
+    <div class="card-header"><%= course.code %></div>
+    <div class="card-body">
+      <h5 class="card-title"><%= course.name %></h5>
+      <p class="card-text"><%= course.description %></p>
+      <a href="#" class="btn btn-warning">Show Course</a>
+    </div>
+  </div>
+  
+<% end %> 
+</div>

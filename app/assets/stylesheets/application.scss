@@ -15,6 +15,10 @@
 //
 @import "bootstrap";
 
+body {
+  background-image: url("bg.jpg");
+}
+
 .booyah-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
   -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
@@ -36,5 +40,28 @@
   color: blueviolet;
   font-family: "Gill Sans Extrabold", monospace;
   font-size: 30px;
+}
+
+.carousel {
+  border-radius: 55px 55px 55px 55px;
+  overflow: hidden;
+}
+
+.hero-image {
+  background-image: url("new_course.png");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 

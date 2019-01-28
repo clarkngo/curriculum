@@ -1,0 +1,38 @@
+<br/>
+<br/>
+
+<div class="booyah-box col-10 offset-1 hero-image">
+  <div class="hero-text">
+    <h1>Suggest New Course</h1>
+    
+    <br/>
+
+    <%= simple_form_for @course do |f| %>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Code</span>
+        </div>
+         <%= f.input :code, label: false, class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
+      </div>   
+
+      <br/>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+        </div>
+         <%= f.input :name, label: false, class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
+      </div>   
+      
+      <br/>      
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Description</span>
+        </div>
+        <%= f.input :description, label: false, class: 'form-control', 'aria-label': 'decription' %>
+      </div>
+      <br/>
+
+      <%= f.submit "Submit!", class: 'btn-lg btn-warning' %>
+    <% end %>
+  </div>
+</div>
