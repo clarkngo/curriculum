@@ -8,31 +8,22 @@
     <br/>
 
     <%= simple_form_for @course do |f| %>
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Code</span>
-        </div>
-         <%= f.input :code, label: false, class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
-      </div>   
+
+      Course Category: <%= f.select :category, options_for_select(Course.categories) %>
 
       <br/>
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-        </div>
-         <%= f.input :name, label: false, class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
-      </div>   
-      
+      <br/>
+
+      Course Name: <%= f.input :name, label: false, class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
+     
       <br/>      
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Description</span>
-        </div>
-        <%= f.input :description, label: false, class: 'form-control', 'aria-label': 'decription' %>
-      </div>
+
+      Course Description: <%= f.input :description, label: false, class: 'form-control', 'aria-label': 'decription' %>
+
       <br/>
 
       <%= f.submit "Submit!", class: 'btn-lg btn-warning' %>
+
     <% end %>
   </div>
 </div>

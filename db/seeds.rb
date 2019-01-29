@@ -10,7 +10,7 @@ Course.delete_all
 
 10.times do
   Course.create(
-    code: Faker::Number.hexadecimal,
+    category: Course.categories.sample,
     name: Faker::ProgrammingLanguage.name,
     description: Faker::ProgrammingLanguage.creator,
   )
