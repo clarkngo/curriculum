@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, :new, :create
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @courses = Course.all
@@ -10,12 +10,13 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.create(course_params)
-    if @course.valid?
+    @course = current_user.courses.build(course_params)
+
+    if @course.save
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
-    end    
+    end
   end
 
   def show
@@ -25,6 +26,6 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:category_id, :name, :description)
+    params.require(:course).permit(:category_id, :name, :description, :user_id)
   end
 end

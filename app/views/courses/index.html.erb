@@ -4,17 +4,17 @@
     <thead>
       <tr>
         <th scope="col">Category</th>
-        <th scope="col">Course Name</th>
+        <th scope="col">Name</th>
       </tr>
     </thead>
     <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <th scope="row"><%= course.category.category %></th>
+        <th scope="row"><%= course.category.name %></th>
         <td><%= course.name %></td>
         <td><%= link_to 'Show Course', course_path(course), class: 'btn btn-warning' %></td>
       </tr>
-    <% end %> 
+    <% end %>
     </tbody>
   </table>
 </div>
