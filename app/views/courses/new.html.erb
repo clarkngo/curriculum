@@ -9,7 +9,7 @@
 
     <%= simple_form_for @course do |f| %>
 
-      Course Category: <%= f.select :category, options_for_select(Course.categories) %>
+      Course Category: <%= f.select :category_id, options_for_select(Category.categories) %>
 
       <br/>
       <br/>

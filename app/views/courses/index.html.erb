@@ -3,20 +3,16 @@
   <table class="table table-dark">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Course Category</th>
+        <th scope="col">Category</th>
         <th scope="col">Course Name</th>
-        <th scope="col">Course Descritpion</th>
       </tr>
     </thead>
     <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <th scope="row"><%= course.id %></th>
-        <td><%= course.category %></td>
+        <th scope="row"><%= course.category.category %></th>
         <td><%= course.name %></td>
-        <td><%= course.description %></td>
-        <td><a href="#" class="btn btn-warning">Show Course</a></td>
+        <td><%= link_to 'Show Course', course_path(course), class: 'btn btn-warning' %></td>
       </tr>
     <% end %> 
     </tbody>

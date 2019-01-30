@@ -1,15 +1,8 @@
 class Course < ApplicationRecord
-  validates :category, presence: true
+  validates :category_id, presence: true
   validates :name, presence: true
   validates :description, presence: true
 
   belongs_to :user, optional: true
-
-  def self.categories
-    [
-      'Preparatory',
-      'Core',
-      'Depth'
-    ]
-  end
+  belongs_to :category
 end
