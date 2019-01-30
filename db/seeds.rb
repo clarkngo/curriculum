@@ -10,7 +10,7 @@ Course.delete_all
 
 if Category.last == nil
   Category.create(
-    category: 'Prepartory',
+    category: 'Preparatory',
   )
   
   Category.create(
