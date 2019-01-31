@@ -1,29 +1,17 @@
 <br/>
 <br/>
 
-<div class="booyah-box col-10 offset-1 hero-image">
+ <div class="booyah-box col-10 offset-1 hero-image">
   <div class="hero-text">
     <h1>Suggest New Course</h1>
-    
-    <br/>
 
-    <%= simple_form_for @course do |f| %>
+     <br/>
 
-      Course Category: <%= f.select :category_id, options_for_select(Category.categories) %>
-
-      <br/>
-      <br/>
-
-      Course Name: <%= f.input :name, label: false, class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
-     
-      <br/>      
-
-      Course Description: <%= f.input :description, label: false, class: 'form-control', 'aria-label': 'decription' %>
-
-      <br/>
-
+     <%= simple_form_for @course do |f| %>
+      <%= f.input :category_id, label: 'Category', collection: Category.all %>
+      <%= f.input :name, label: 'Name', class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
+      <%= f.input :description, label: 'Description', class: 'form-control', 'aria-label': 'decription' %>
       <%= f.submit "Submit!", class: 'btn-lg btn-warning' %>
-
     <% end %>
   </div>
 </div>
