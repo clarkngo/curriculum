@@ -23,33 +23,6 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  def edit
-    @course = Course.find_by_id(params[:id])
-    return render_not_found if @course.blank?
-    return render_not_found(:forbidden) if @course.user != current_user
-  end
-
-  def update
-    @course = Course.find_by_id(params[:id])
-    return render_not_found if @course.blank?
-    return render_not_found(:forbidden) if @course.user != current_user
-    @course.update_attributes(course_params)
-
-    if @course.valid?
-      redirect_to courses_path
-    else
-      return render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @course = Course.find_by_id(params[:id])
-    return render_not_found if @course.blank?
-    return render_not_found(:forbidden) if @course.user != current_user
-    @course.destroy
-    redirect_to root_path
-  end  
-
   private
 
   def course_params
