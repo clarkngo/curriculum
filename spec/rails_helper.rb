@@ -59,4 +59,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Custom modules
+  # errorDevise::MissingWarden: Devise could not find the `Warden::Proxy` instance on your request environment.
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end

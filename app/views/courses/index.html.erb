@@ -1,0 +1,20 @@
+<br />
+<div class="booyah-box">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Course Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <th scope="row"><%= course.category.name %></th>
+        <td><%= course.name %></td>
+        <td><%= link_to 'Show Course', course_path(course), class: 'btn btn-warning' %></td>
+      </tr>
+    <% end %> 
+    </tbody>
+  </table>
+</div>
