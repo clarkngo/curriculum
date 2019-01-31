@@ -203,5 +203,38 @@ require 'rails_helper'
       expect(course.message).to eq "Initial Value"
     end
   end  
+
+  ## destroy
+  describe "courses#destroy action" do
+    it "shouldn't allow users who didn't create the course to destroy it" do
+      course = FactoryBot.create(:course)
+      user = FactoryBot.create(:user)
+      sign_in user
+      delete :destroy, params: { id: course.id }
+      expect(response).to have_http_status(:forbidden)
+    end
+
+    it "shouldn't let unauthenticated users destroy a course" do
+      course = FactoryBot.create(:course)
+      delete :destroy, params: { id: course.id }
+      expect(response).to redirect_to new_user_session_path
+    end
+
+    it "should allow a user to destroy courses" do
+      course = FactoryBot.create(:course)
+      sign_in course.user
+      delete :destroy, params: { id: course.id }
+      expect(response).to redirect_to root_path
+      course = course.find_by_id(course.id)
+      expect(course).to eq nil
+    end
+
+    it "should return a 404 message if we cannot find a course with the id that is specified" do
+      user = FactoryBot.create(:user)
+      sign_in user
+      delete :destroy, params: { id: 'SPACEDUCK' }
+      expect(response).to have_http_status(:not_found)
+    end
+  end
  end
  
