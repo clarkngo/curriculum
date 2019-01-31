@@ -2,15 +2,15 @@ User.destroy_all
 Course.destroy_all
 Category.destroy_all
 
- # create categories
+# create categories
 preparatory = Category.create!(name: 'Preparatory')
 core = Category.create!(name: 'Core')
 depth = Category.create!(name: 'Depth')
 
- # create user
+# create user
 user = User.create!(email: 'someone@example.com', password: 'password', password_confirmation: 'password')
 
- # create courses
+# create courses
 Course.create(
   user_id: user.id,
   category_id: preparatory.id,
