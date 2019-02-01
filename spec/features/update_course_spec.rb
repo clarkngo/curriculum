@@ -21,9 +21,9 @@ RSpec.feature "update course", :type => :feature do
 
     ## Updating a course 
 
-    visit "/courses/33/edit"
+    visit "/courses/14/edit"
 
-    fill_in "Category", :with => "Preparatory"
+    select('Preparatory', from: 'Category')
     fill_in "Name", :with => "Intro to Java"
     fill_in "Description", :with => "This course is an intro to Java."
     click_button "Submit!"
