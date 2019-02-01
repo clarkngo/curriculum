@@ -1,0 +1,11 @@
+<div class="booyah-box col-10 offset-1">
+ <h2>Edit Course</h2>
+
+  <%= simple_form_for @course do |f| %>
+    <%= f.input :category_id, label: 'Category', collection: Category.all %>
+    <%= f.input :name, label: 'Name', class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
+    <%= f.input :description, label: 'Description', class: 'form-control', 'aria-label': 'decription' %>
+    <%= f.submit "Submit!", class: 'btn-lg btn-warning' %>
+  <% end %>
+
+</div>
