@@ -25,8 +25,10 @@ class CoursesController < ApplicationController
 
   def destroy
     @course = Course.find(params[:id])
-    return render_not_found if @course.blank?
-    return render_not_found(:forbidden) if @course.user != current_user
+    if @course.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
+
     @course.destroy
     redirect_to root_path
   end
