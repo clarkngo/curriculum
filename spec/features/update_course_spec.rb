@@ -1,79 +1,33 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe coursesController, type: :controller do
-  describe "courses#update action" do
-    it "shouldn't let users who didn't create the course update it" do
-      course = FactoryBot.create(:course)
-      user = FactoryBot.create(:user)
-      sign_in user
-      patch :update, params: { id: course.id, course: { category: 'Preparatory', name: 'Intro to Data Structures and Algorithms', description: 'This course is an introduction to Data Structures and Algorithms.'} }
-      expect(response).to have_http_status(:forbidden)
-    end  
+RSpec.feature "update course", :type => :feature do
+  scenario "User updates a course" do
 
-    it "shouldn't let unauthenticated users update a course" do
-      course = FactoryBot.create(:course)
-      patch :update, params: { course: { category: 'Preparatory', name: 'Intro to Data Structures and Algorithms', description: 'This course is an introduction to Data Structures and Algorithms.'} }
-      expect(response).to redirect_to new_user_session_path
-    end
+    ## User sign in
 
-    it "should allow users to successfully update courses" do
-      course = FactoryBot.create(:course, message: "Initial Value")
-      sign_in course.user
-      
-      patch :update, params: { id: course.id, course: { message: 'Changed' } }
-      expect(response).to redirect_to root_path
-      course.reload
-      expect(course.message).to eq "Changed"
-    end
+    # arrange
+    user = create(:user)
 
-    it "should have http 404 error if the course cannot be found" do
-      user = FactoryBot.create(:user)
-      sign_in user
-
-      patch :update, params: { id: "YOLOSWAG", course: { message: 'Changed' } }
-      expect(response).to have_http_status(:not_found)
-    end
-
-    it "should render the edit form with an http status of unprocessable_entity" do
-      course = FactoryBot.create(:course, message: "Initial Value")
-      sign_in course.user
-      
-      patch :update, params: { id: course.id, course: { message: '' } }
-      expect(response).to have_http_status(:unprocessable_entity)
-      course.reload
-      expect(course.message).to eq "Initial Value"
-    end
-  end
-
-  describe "courses#edit action" do
-    it "shouldn't let a user who did not create the course edit a course" do
-      course = FactoryBot.create(:course)
-      user = FactoryBot.create(:user)
-      sign_in user
-      get :edit, params: { id: course.id }
-      expect(response).to have_http_status(:forbidden)
-    end
-
-    it "shouldn't let unauthenticated users edit a course" do
-      course = FactoryBot.create(:course)
-      get :edit, params: { id: course.id }
-      expect(response).to redirect_to new_user_session_path
-    end
-
-    it "should successfully show the edit form if the course is found" do
-      course = FactoryBot.create(:course)
-      sign_in course.user
+    visit '/users/sign_in'
     
-      get :edit, params: { id: course.id }
-      expect(response).to have_http_status(:success)
-    end
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
 
-    it "should return a 404 error message if the course is not found" do
-      user = FactoryBot.create(:user)
-      sign_in user
+    # act
+    click_on 'Log in'
 
-      get :edit, params: { id: 'SWAG' }
-      expect(response).to have_http_status(:not_found)
-    end
+    # assert
+    expect(page).to have_content 'Success Signed in successfully.'
+
+    ## Updating a course 
+
+    visit "/courses/33/edit"
+
+    fill_in "Category", :with => "Preparatory"
+    fill_in "Name", :with => "Intro to Java"
+    fill_in "Description", :with => "This course is an intro to Java."
+    click_button "Submit!"
+
+    expect(page).to have_text("Course was succesfully updated.")
   end
 end
