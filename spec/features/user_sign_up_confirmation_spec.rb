@@ -13,8 +13,7 @@ RSpec.feature "user signup process confirmation", type: :feature do
     # act
     click_button 'Sign up'
 
-    visit "/"
     # assert
-    expect(page).to have_content 'Success You will receive an email with instructions for how to confirm your email address in a few minutes.' 
+    expect(page).to have_content 'Success A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.' 
   end
 end
