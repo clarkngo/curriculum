@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "user signup process", type: :feature do
+RSpec.feature "user signup process confirmation", type: :feature do
   scenario 'user signup' do
     # arrange
     visit "/users/sign_up"
@@ -13,6 +13,7 @@ RSpec.feature "user signup process", type: :feature do
     # act
     click_button 'Sign up'
 
+    visit "/"
     # assert
     expect(page).to have_content 'Success You will receive an email with instructions for how to confirm your email address in a few minutes.' 
   end
