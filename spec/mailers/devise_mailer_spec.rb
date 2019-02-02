@@ -5,6 +5,6 @@ RSpec.describe Devise::Mailer do
     confirmation_email = Devise.mailer.deliveries.last
 
     expect(user.email).to eq confirmation_email.to[0]
-    expect(confirmation_email.body.to_s).to have_content 'As Picard says, "Engage!"'
+    expect(confirmation_email.body.to_s).to have_content "Welcome jdoe1@example.com!\n\nYou can confirm your account email through the link below:\n\nConfirm my account\n"
  end 
 end
