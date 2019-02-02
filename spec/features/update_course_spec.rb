@@ -13,19 +13,26 @@ RSpec.feature "update course", :type => :feature do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
 
+    # assert
+    expect(page).to have_xpath('/')
+
+
+
     # act
     click_on 'Log in'
 
-    # assert
-    expect(page).to have_content 'Success Signed in successfully.'
+    click_on 'Suggest New Course'
+    # act
 
-    ## Updating a course 
-
-    visit "/courses/14/edit"
-
+    ## Create new course
     select('Preparatory', from: 'Category')
     fill_in "Name", :with => "Intro to Java"
     fill_in "Description", :with => "This course is an intro to Java."
+    click_button "Submit!"
+
+    ## Updating a course 
+    fill_in "Name", :with => "Intro to C++"
+    fill_in "Description", :with => "This course is an intro to C++."
     click_button "Submit!"
 
     expect(page).to have_text("Course was succesfully updated.")
