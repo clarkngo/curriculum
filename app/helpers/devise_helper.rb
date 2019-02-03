@@ -13,6 +13,7 @@ module DeviseHelper
       </strong>
       #{messages}
     </div>
+    <br/>
     HTML
 
     html.html_safe
