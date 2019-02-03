@@ -6,7 +6,7 @@ RSpec.feature "update course", :type => :feature do
     ## User sign in
 
     # arrange
-    user = create(:user)
+    user = FactoryBot.create(:user)
 
     visit '/users/sign_in'
     
@@ -24,13 +24,11 @@ RSpec.feature "update course", :type => :feature do
     click_on 'Suggest New Course'
     # act
 
-    ## Create new course
-    select('Preparatory', from: 'Category')
-    fill_in "Name", :with => "Intro to Java"
-    fill_in "Description", :with => "This course is an intro to Java."
-    click_button "Submit!"
+    course = FactoryBot.create(:course)
 
+    visit '/courses/'
     ## Updating a course 
+    
     fill_in "Name", :with => "Intro to C++"
     fill_in "Description", :with => "This course is an intro to C++."
     click_button "Submit!"
