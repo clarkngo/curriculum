@@ -131,3 +131,4 @@ Course.create(
   name: 'Computer Science Capstone',
   description: 'The Computer Science Capstone is the capstone course for the Master of Science in Computer Science (MSCS) program. Students will demonstrate their ability to apply computer systems principles, tools, and techniques to a specific problem or research study, and to acquire and/or apply additional knowledge in a unique domain. This course integrates knowledge gained from previous coursework in the MSCS program. Prerequisite: Final quarter of study'
 )
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
