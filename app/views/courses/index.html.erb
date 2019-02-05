@@ -15,7 +15,7 @@
           <th scope="row"><%= course.category.name %></th>
           <td><%= course.name %></td>
           <td><%= link_to 'Show Course', course_path(course), class: 'btn btn-warning' %></td>
-          <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-primary' %></td>
+          <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-primary edit' %></td>
         </tr>
       <% end %> 
     </tbody>
