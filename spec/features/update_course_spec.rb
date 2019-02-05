@@ -12,10 +12,9 @@ RSpec.feature "update course", :type => :feature do
     click_on 'Log in'
 
     ## Update course
-    visit '/courses'
-
-    first('.edit').click_link('Edit')
+    visit '/courses/1/edit'
     
+    select "Preparatory", from: 'Category'
     fill_in "Name", :with => "Intro to C++"
     fill_in "Description", :with => "This course is an intro to C++."
     click_button "Submit!"
