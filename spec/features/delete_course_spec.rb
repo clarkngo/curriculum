@@ -2,31 +2,26 @@ require 'rails_helper'
 
 RSpec.feature "user sign in process", type: :feature do
   scenario 'user sign in' do
-    # arrange
-    user = create(:user)
+    user = FactoryBot.create(:user)
+    category = FactoryBot.create(:category)
+    course = Course.create(
+      category: category,
+      name: 'Intro to AI',
+      description: 'This course is an intro to AI.',
+      user: user
+      )
 
-    visit '/users/sign_in'
-    
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    visit '/'
+    click_on 'Sign in'
 
-    # act
+    fill_in 'Email', :with => user.email
+    fill_in 'Password', :with => user.password
+
     click_on 'Log in'
 
-    # assert
-    expect(page).to have_content 'Success Signed in successfully.'
+    visit course_path(course)
 
-    # arrange
-    visit '/courses/33'
-    
-    fill_in 'Category', with: 'Preparatory'
-    fill_in 'Name', with: 'Intro to Data'
-    fill_in 'Category', with: 'This course is about Intro to Data'
-
-    # act
-    click_on 'Submit!'
-
-    # assert
+    click_on 'Destroy'
     expect(page).to have_content 'Successfully destroyed course.'    
   end
 end
