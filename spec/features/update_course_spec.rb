@@ -1,24 +1,30 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.feature "update course", :type => :feature do
-  scenario "User updates a course" do
+RSpec.feature "user sign in process", type: :feature do
+  scenario 'user sign in' do
+    user = FactoryBot.create(:user)
+    category = FactoryBot.create(:category)
+    course = Course.create(
+      category: category,
+      name: 'Intro to AI',
+      description: 'This course is an intro to AI.',
+      user: user
+      )
 
-    course = FactoryBot.create(:course)
-    
-    ## User sign in 
-    visit '/users/sign_in'
-    
-    fill_in 'Email', :with => course.user.email
-    fill_in 'Password', :with => "password"
+    visit '/'
+    click_on 'Sign in'
+
+    fill_in 'Email', :with => user.email
+    fill_in 'Password', :with => user.password
 
     click_on 'Log in'
-    ## Update course
-    visit '/courses/1/edit'
-    
+
+    visit course_path(course)
+
+    click_on 'Edit'
     fill_in("Name", with: "Intro to C++")
     fill_in("Description", with: "This course is an intro to C++.")
-    click_button "Submit!"
-
+    click_on "Submit!"
     expect(page).to have_text("Course was succesfully updated.")
   end
 end
