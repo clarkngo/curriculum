@@ -22,6 +22,6 @@ RSpec.feature "user sign in process", type: :feature do
     visit course_path(course)
 
     click_on 'Destroy'
-    expect(page).to have_content 'Successfully destroyed course.'    
+    expect(page).to have_content 'Success'
   end
 end
