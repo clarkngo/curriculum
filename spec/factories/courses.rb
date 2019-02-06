@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :course do
-    category {FactoryBot.create(:category)}
-    name {'Intro to Machine Learning'}
-    description {'This course is an intro to machine learning.'}
-    user {FactoryBot.create(:user)}
+    category_id {'Preparatory'}
+    name { "Intro to Computer Science" }
+    description { "This course is an introduction to Computer Science" }    
+    user_id {'someone4@example.com'}
   end
 end
