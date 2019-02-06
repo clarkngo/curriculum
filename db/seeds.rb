@@ -1,3 +1,5 @@
+
+
 User.destroy_all
 Course.destroy_all
 Category.destroy_all
