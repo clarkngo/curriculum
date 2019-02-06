@@ -30,6 +30,7 @@ class CoursesController < ApplicationController
     end
 
     @course.destroy
+    flash[:success] = "Successfully destroyed course!"
     redirect_to root_path
   end
 
