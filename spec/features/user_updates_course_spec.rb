@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "user sign in process", type: :feature do
-  scenario 'user sign in' do
+RSpec.feature "user updates a course process", type: :feature do
+  scenario 'user updates a course' do
 
     # arrange
     user = FactoryBot.create(:user)
