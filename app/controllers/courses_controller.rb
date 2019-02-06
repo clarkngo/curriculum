@@ -36,6 +36,7 @@ class CoursesController < ApplicationController
     @course.update_attributes(course_params)
     
     if @course.valid?
+      flash[:success] = "Course was succesfully updated."
       redirect_to root_path
     else
       return render :edit, status: :unprocessable_entity
