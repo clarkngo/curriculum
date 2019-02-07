@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature "user sign in process", type: :feature do
-  scenario 'user sign in' do
+RSpec.feature "user deletes a course process", type: :feature do
+  scenario 'user deletes a course' do
+
+    # arrange
     user = FactoryBot.create(:user)
     category = FactoryBot.create(:category)
     course = Course.create(
@@ -9,7 +11,7 @@ RSpec.feature "user sign in process", type: :feature do
       name: 'Intro to AI',
       description: 'This course is an intro to AI.',
       user: user
-      )
+    )
 
     visit '/'
     click_on 'Sign in'
@@ -21,7 +23,10 @@ RSpec.feature "user sign in process", type: :feature do
 
     visit course_path(course)
 
-    click_on 'Destroy'
-    expect(page).to have_content 'Success'
+    # act    
+    click_on 'Delete'
+
+    # assert
+    expect(page).to have_text("Successfully deleted a course!")
   end
 end
