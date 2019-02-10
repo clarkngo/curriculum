@@ -1,0 +1,14 @@
+# Create a file config/application.yml
+
+# Copy the the following code and
+# replace with your AWS Access Key, AWS Secret Key and AWS Bucket
+
+# To setup up AWS account, IAM, S3 Bucket, API keys:
+# http://blog.thefirehoseproject.com/posts/switching-carrierwave-to-use-s3-with-heroku-and-localhost/
+
+# make sure that .gitnore includes config/application.yml 
+# to avoid pushing keys to GitHub repository
+
+AWS_ACCESS_KEY: Your_AWS_access_key_here
+AWS_SECRET_KEY: Your_AWS_secret_key_here
+AWS_BUCKET: Your_AWS_bucket_here
