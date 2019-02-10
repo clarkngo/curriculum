@@ -3,8 +3,14 @@ class CommentsController < ApplicationController
 
   def create
     @course = Course.find(params[:course_id])
-    @course.comments.create(comment_params.merge(user: current_user))
-    flash[:success] = "Successfully added a comment!"
+    @comments = @course.comments.build(comment_params.merge(user: current_user))
+
+    if @comments.save
+      flash[:success] = "Successfully added a comment!"  
+    else
+      flash[:error] = "Unable to add blank comment!" 
+    end
+    
     redirect_to course_path(@course)
   end
 
