@@ -14,7 +14,7 @@
   <div class="clear"></div>
   <h1>Comments</h1>
 
-  <% @course.comments.each do |comment| %>
+  <% @course.comments.reverse_each do |comment| %>
     <div>
       <blockquote>
         <b><%= comment.user.email %></b> - 
