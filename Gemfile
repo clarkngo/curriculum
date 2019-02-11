@@ -11,6 +11,7 @@ gem 'coffee-rails',            '~> 4.2'
 gem 'devise',                  '~> 4.5'  
 
 gem 'faker',                   '~> 1.9.1'
+gem 'figaro',                  '~> 1.1.1'
 
 gem 'rails',                   '~> 5.2.2'
 
