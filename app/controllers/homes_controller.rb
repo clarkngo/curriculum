@@ -1,5 +1,7 @@
 class HomesController < ApplicationController
   def index
-    @comments = current_user.comments
+    if current_user
+      @comments = current_user.comments
+    end
   end
 end
