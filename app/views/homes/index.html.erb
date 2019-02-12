@@ -25,3 +25,26 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<% if user_signed_in? %>
+
+  <br/>
+  <br/>
+  <table class="table table-striped table-dark">
+    <thead> 
+      <tr>
+        <th scope="col">Comment</th>
+        <th scope="col">Course</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @comments.each do |comment| %>
+        <tr>
+          <th scope="row"><%= comment.message %></th>
+          <th><%= comment.course.name %></th>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+<% end %>
