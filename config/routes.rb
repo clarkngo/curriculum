@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   
   root to: 'homes#index'
   
-  resources :courses
+  resources :courses do
+    resources :comments, only: :create
+  end
 end
