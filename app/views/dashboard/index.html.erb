@@ -3,22 +3,27 @@
 
   <br/>
   <br/>
-  <table class="table table-striped table-dark">
-    <thead> 
-      <tr>
-        <th scope="col">Comments</th>
-        <th scope="col">Courses</th>
-      </tr>
-    </thead>
-    <tbody>
-
-      <% @comments.each do |comment| %>
+  <h2 class="text-center" style="color: white">List of Comments</h2>
+  <br/>
+  <% if @comments.empty? %>
+    <h1 class="hero-text">You have not commented to any courses =)</h1>
+  <% else %>
+    <table class="table table-striped table-dark">
+      <thead> 
         <tr>
-          <th scope="row"><%= comment.message %></th>
-          <th><%= comment.course.name %></th>
+          <th scope="col">Comments</th>
+          <th scope="col">Courses</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <th scope="row"><%= comment.message %></th>
+            <th><%= comment.course.name %></th>
+          </tr>
+        <% end %>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>
