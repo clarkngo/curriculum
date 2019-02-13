@@ -22,6 +22,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @comment = Comment.new
+    @avatar = @course.user.avatar
   end
 
   def destroy
