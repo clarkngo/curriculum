@@ -16,7 +16,10 @@ module Curriculum
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-     # configure file generation for both application and specifications.
+    # Don't generate system test files.
+    config.generators.system_tests = nil
+
+    # configure file generation for both application and specifications.
     config.generators do |g|
       g.helper          false
       g.orm             :active_record
@@ -27,6 +30,8 @@ module Curriculum
                         helper_specs: false,
                         routing_specs: false,
                         view_specs: false
+      g.fixture_replacement :factory_bot
+      g.fallbacks[:rspec] = :test_unit
       g.stylesheets     false
       g.javascripts     false
     end
