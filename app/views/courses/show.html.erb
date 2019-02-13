@@ -2,6 +2,8 @@
   <p>Category: <%= @course.category.name %></p>
   <p>Name: <%= @course.name %></p>
   <p>Description: <%= @course.description %></p>
+  <p>Creator: <%= @course.user.email %></p>
+  <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
 
    <br />
 
