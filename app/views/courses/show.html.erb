@@ -3,7 +3,11 @@
   <p>Name: <%= @course.name %></p>
   <p>Description: <%= @course.description %></p>
   <p>Creator: <%= @course.user.email %></p>
-  <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
+  <% if @avatar.present? %>
+    <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
+  <% else %>
+    <p><%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %></p>
+  <% end %>
 
    <br />
 
