@@ -6,16 +6,18 @@ ruby '2.5.3'
 gem 'bootsnap',                '>= 1.1.0', require: false
 gem 'bootstrap',               '~> 4.2.1'
 
-gem 'coffee-rails',            '~> 4.2'
+gem 'carrierwave',             '~> 1.3.1'
 
 gem 'devise',                  '~> 4.5'  
 
 gem 'faker',                   '~> 1.9.1'
+gem 'figaro',                  '~> 1.1.1'
 
 gem 'rails',                   '~> 5.2.2'
 
-gem 'jbuilder',                '~> 2.5'
 gem 'jquery-rails',            '~> 4.3.3'
+
+gem 'mini_magick',             '~> 4.9.2'
 
 gem 'pg',                      '>= 0.18', '< 2.0'
 gem 'popper_js',               '~> 1.14', '>= 1.14.5'
@@ -29,6 +31,9 @@ gem 'turbolinks',              '~> 5'
 
 gem 'uglifier',                '>= 1.3.0'
 
+group :production do
+  gem 'fog-aws',               '~> 3.3'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
