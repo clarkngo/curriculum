@@ -28,3 +28,6 @@
 
 # Ignore api keys
 /config/application.yml
+
+#Ignore public uploads
+/public/uploads
