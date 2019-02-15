@@ -1,4 +1,6 @@
 class Course < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
   validates :category_id, presence: true
   validates :name, presence: true
   validates :description, presence: true
