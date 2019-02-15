@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :courses do
     resources :comments, only: :create
   end
+  
+  resources :dashboard, only: :index, :format => false
+
 end
