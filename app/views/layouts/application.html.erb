@@ -45,6 +45,7 @@
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <%= link_to "New Course", new_course_path, class: 'dropdown-item' %>
                     <div class="dropdown-divider"></div>
+                    <%= link_to "My Dashboard", dashboard_index_path, class: 'dropdown-item' %>
                     <%= link_to "My Profile", edit_user_registration_path, class: 'dropdown-item' %>
                     <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: 'dropdown-item' %>
                   </div>
