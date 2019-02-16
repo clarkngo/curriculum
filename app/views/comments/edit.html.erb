@@ -1,0 +1,15 @@
+<br/>
+
+<div class="booyah-box col-10 offset-1">
+  <h2>Edit Comment:</h2>
+  <br/>
+  <br/>
+  <p><%= @comment.message %></p>
+  <br/>
+  <br/>
+  <%= simple_form_for [@course, @comment] do |f| %>
+    <%= f.input :message, label: 'Message', class: 'form-control', 'aria-label': 'decription' %>
+    <br/>
+    <%= f.submit "Update!", class: 'btn-lg btn-primary' %>
+  <% end %>
+</div>
