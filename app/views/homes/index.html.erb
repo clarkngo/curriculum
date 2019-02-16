@@ -5,15 +5,28 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
+
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <%= image_tag 'cpp.jpg', class: 'd-block w-100 h-450' %>
+      <% if @course_latest.photo.present? %>
+        <%= link_to image_tag(@course_latest.photo.header.url), course_path(@course_latest), class: 'd-block w-100 h-450' %>    
+      <% else %>
+        <%= image_tag 'default-course-photo-1110x624.38'%>
+      <% end %>
     </div>
     <div class="carousel-item">
-      <%= image_tag 'os.jpg', class: 'd-block w-100 h-450' %>
+      <% if @course_second_latest.photo.present? %>
+        <%= link_to image_tag(@course_second_latest.photo.header.url), course_path(@course_second_latest), class: 'd-block w-100 h-450' %>    
+      <% else %>
+        <%= image_tag 'default-course-photo-1110x624.38'%>
+      <% end %>
     </div>
     <div class="carousel-item">
-      <%= image_tag 'data_vis.png', class: 'd-block w-100 h-450' %>
+      <% if @course_third_latest.photo.present? %>
+        <%= link_to image_tag(@course_third_latest.photo.header.url), course_path(@course_third_latest), class: 'd-block w-100 h-450' %>    
+      <% else %>
+        <%= image_tag 'default-course-photo-1110x624.38'%>
+      <% end %>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
