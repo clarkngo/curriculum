@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "user updates a course process", type: :feature do
-  scenario 'user updates a course' do
+RSpec.feature "user add a course photo process", type: :feature do
+  scenario 'user add a course photo' do
 
     # arrange
     user = FactoryBot.create(:user)
@@ -27,7 +27,7 @@ RSpec.feature "user updates a course process", type: :feature do
 
     fill_in("Name", with: "Intro to C++")
     fill_in("Description", with: "This course is an intro to C++.")
-    attach_file('Upload profile picture', Rails.root + 'spec/fixtures/images/test_picture.png')
+    attach_file('Upload course photo', Rails.root + 'spec/fixtures/images/test_picture.png')
 
     # act    
     click_on "Submit!"
