@@ -21,8 +21,10 @@ RSpec.feature "user add a course photo process", type: :feature do
 
     click_on 'Log in'
 
-    visit course_path(course)
+    # visit courses page
+    click_on 'Courses'
 
+    click_on 'Show Course'
     click_on 'Edit'
 
     fill_in("Name", with: "Intro to C++")
