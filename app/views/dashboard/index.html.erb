@@ -20,9 +20,11 @@
           <tr>
             <th scope="row"><%= comment.message %></th>
             <th><%= comment.course.name %></th>
+            <th><%= link_to 'Show Course', course_path(comment.course), class: 'btn btn-info' %></th>
+            <th><%= link_to 'Edit', edit_course_comment_path(comment, comment.id), class: 'btn btn-primary' %></th>
+            <th><%= link_to 'Delete', course_comment_path(comment, comment.id), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %></th>
           </tr>
         <% end %>
-
       </tbody>
     </table>
   <% end %>
