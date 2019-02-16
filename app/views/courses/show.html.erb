@@ -3,7 +3,11 @@
   <p>Name: <%= @course.name %></p>
   <p>Description: <%= @course.description %></p>
   <p>Creator: <%= @course.user.email %></p>
-  <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
+  <% if current_user.avatar? %>
+      <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
+  <% else %>
+      <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>
+  <% end %>
 
    <br />
 
@@ -19,7 +23,7 @@
   <% @course.comments.reverse_each do |comment| %>
     <div>
       <blockquote>
-        <b><%= comment.user.email %></b> - 
+        <b><%= comment.user.email %></b> -
         <%= comment.message %>
       </blockquote>
     </div>
