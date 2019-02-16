@@ -10,7 +10,19 @@
     <br/>
     <%= f.input :description, label: 'Description', class: 'form-control', 'aria-label': 'decription' %>
     <br/>
-    <%= f.submit "Submit!", class: 'btn-lg btn-warning' %>
+
+    <h3><%= f.label :upload_course_photo %></h3><br />
+
+    <% if @course.photo? %>
+      <%= image_tag @course.photo.thumb.url, class: 'profile-image' %>
+    <% else %>
+      <%= image_tag 'default-course-photo-50x50.jpg', class: 'profile-image' %>
+    <% end %>
+
+    <%= f.file_field :photo, placeholder: "Upload course photo" %>
+    <br/>    
+    <br/>
+    <%= f.submit "Submit!", class: 'btn-lg btn-primary' %>
   <% end %>
 
 </div>
