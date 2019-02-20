@@ -11,13 +11,17 @@ RSpec.feature "user upload profile picture process", type: :feature do
     # cannot use Password because it appears in Password Confirmation
     fill_in 'user_password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
+    click_button 'Sign up'
+
+    visit edit_user_registration_path
     attach_file('Upload profile picture', Rails.root + 'spec/features/test_picture.png')
 
+    fill_in 'Current password', with: 'password'
+    
     # act
-    click_button 'Sign up'
+    click_on 'Update'
 
     # assert
     expect(User.last.avatar).not_to be_nil
-    expect(page).to have_content 'Success Welcome! You have signed up successfully.' 
   end
 end
