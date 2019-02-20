@@ -26,5 +26,6 @@ RSpec.feature "user adds a course process", type: :feature do
 
     # assert
     expect(Course.last.name).to eq("Intro to ML")
+    expect(page).to have_text("Successfully added a course!")
   end
 end
