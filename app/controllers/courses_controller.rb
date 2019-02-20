@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
     @course = current_user.courses.build(course_params)
 
     if @course.save
+      flash[:success] = "Successfully added a course!"
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
