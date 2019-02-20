@@ -8,7 +8,7 @@ gem 'bootstrap',               '~> 4.2.1'
 
 gem 'carrierwave',             '~> 1.3.1'
 
-gem 'devise',                  '~> 4.5'  
+gem 'devise',                  '~> 4.5'
 
 gem 'faker',                   '~> 1.9.1'
 gem 'figaro',                  '~> 1.1.1'

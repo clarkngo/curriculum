@@ -1,5 +1,17 @@
-# config/initializers/carrierwave.rb
-if Rails.env.production? 
+if Rails.env.development?
+  CarrierWave.configure do |config|
+    config.storage = :file
+  end
+end
+
+if Rails.env.test?
+  CarrierWave.configure do |config|
+    config.storage = :file
+    config.enable_processing = false
+  end
+end
+
+if Rails.env.production?
   CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'                        # required
     config.fog_credentials = {
@@ -8,18 +20,5 @@ if Rails.env.production?
       aws_secret_access_key: ENV["AWS_SECRET_KEY"],        # required
     }
     config.fog_directory  = ENV["AWS_BUCKET"]              # required
-  end
-end
-
-if Rails.env.test? 
-  CarrierWave.configure do |config|
-    config.storage = :file
-    config.enable_processing = false
-  end
-end
-
-if Rails.env.development?
-  CarrierWave.configure do |config|
-    config.storage = :file
   end
 end
