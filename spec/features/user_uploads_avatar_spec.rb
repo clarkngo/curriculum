@@ -14,7 +14,7 @@ RSpec.feature "user upload profile picture process", type: :feature do
     click_button 'Sign up'
 
     visit edit_user_registration_path
-    attach_file('Upload profile picture', Rails.root + 'spec/features/test_picture.png')
+    attach_file('Upload profile picture', Rails.root + 'spec/fixtures/images/test_picture.png')
 
     fill_in 'Current password', with: 'password'
     
