@@ -1,0 +1,4 @@
+production:
+  AWS_ACCESS_KEY: Your_AWS_access_key_here
+  AWS_SECRET_KEY: Your_AWS_secret_key_here
+  AWS_BUCKET: Your_AWS_bucket_here
