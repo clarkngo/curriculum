@@ -28,7 +28,7 @@ RSpec.feature "list commented course by current user process", type: :feature do
     click_on "Add a Comment"
 
     # act    
-    click_on 'My Dashboard'
+    visit dashboard_index_path
 
     # assert
     expect(page).to have_text("The course was well-designed and the instructor was great!")
