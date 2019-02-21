@@ -1,28 +1,9 @@
 <br/>
 
 <div class="booyah-box col-10 offset-1">
- <h2>Edit Course</h2>
 
-  <%= simple_form_for @course do |f| %>
-    <%= f.input :category_id, label: 'Category', collection: Category.all %>
-    <br/>
-    <%= f.input :name, label: 'Name', class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
-    <br/>
-    <%= f.input :description, label: 'Description', class: 'form-control', 'aria-label': 'decription' %>
-    <br/>
+  <h2>Edit Course</h2>
 
-    <h3><%= f.label :upload_course_photo %></h3><br />
-
-    <% if @course.photo? %>
-      <%= image_tag @course.photo.thumb.url, class: 'profile-image' %>
-    <% else %>
-      <%= image_tag 'default-course-photo-50x50.jpg', class: 'profile-image' %>
-    <% end %>
-
-    <%= f.file_field :photo, placeholder: "Upload course photo" %>
-    <br/>    
-    <br/>
-    <%= f.submit "Submit!", class: 'btn-lg btn-primary' %>
-  <% end %>
+  <%= render "form" %>
 
 </div>
