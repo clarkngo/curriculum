@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }
 
   get 'homes/index'
   
@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :courses do
     resources :comments, only: :create
   end
+  
+  resources :dashboard, only: :index, :format => false
+
 end

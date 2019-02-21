@@ -3,6 +3,7 @@
   <table class="table table-dark">
     <thead>
       <tr>
+        <th scope="col">Photo</th>
         <th scope="col">Category</th>
         <th scope="col">Course Name</th>
         <th scope="col"></th>
@@ -12,7 +13,16 @@
     <tbody>
       <% @courses.each do |course| %>
         <tr>
-          <th scope="row"><%= course.category.name %></th>
+          <th scope="row">
+
+          <% if course.photo? %>
+            <%= image_tag course.photo.thumb.url, class: 'profile-image' %>
+          <% else %>
+            <%= image_tag 'default-course-photo-50x50.jpg', class: 'profile-image' %>
+          <% end %>
+
+          </th>
+          <td><%= course.category.name %></td>
           <td><%= course.name %></td>
           <td><%= link_to 'Show Course', course_path(course), class: 'btn btn-warning' %></td>
           <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-primary' %></td>

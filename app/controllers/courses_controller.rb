@@ -13,7 +13,8 @@ class CoursesController < ApplicationController
     @course = current_user.courses.build(course_params)
 
     if @course.save
-      redirect_to root_path
+      flash[:success] = "Successfully added a course!"
+      redirect_to course_path(@course)
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,6 +23,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @comment = Comment.new
+    @avatar = @course.user.avatar
   end
 
   def destroy
@@ -49,7 +51,7 @@ class CoursesController < ApplicationController
     
     if @course.valid?
       flash[:success] = "Course was succesfully updated."
-      redirect_to root_path
+      redirect_to course_path(@course)
     else
       return render :edit, status: :unprocessable_entity
     end
@@ -58,6 +60,6 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:category_id, :name, :description, :user_id)
+    params.require(:course).permit(:category_id, :name, :description, :photo, :photo_header, :user_id)
   end
 end
