@@ -29,7 +29,8 @@ RSpec.feature "user add a course photo process", type: :feature do
 
     fill_in("Name", with: "Intro to C++")
     fill_in("Description", with: "This course is an intro to C++.")
-    attach_file('Upload course photo', Rails.root + 'spec/fixtures/images/test_picture.png')
+    attach_file('Upload course photo thumbnail', Rails.root + 'spec/fixtures/images/default-course-photo-50x50.jpg')
+    attach_file('Upload course photo header', Rails.root + 'spec/fixtures/images/default-course-photo-1110x624.38.jpg')
 
     # act    
     click_on "Submit!"
