@@ -63,7 +63,7 @@
       <!-- end of carousel item active -->
         
 
-        <% @courses_except_last.order(:user_id).reverse_order.each do |course| %>
+        <% @courses_except_last.reverse_order.each do |course| %>
           <div class="carousel-item">
             <div class="row">
           
