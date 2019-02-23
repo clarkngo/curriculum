@@ -29,9 +29,9 @@
                     <p>
                       <i>
                         Creator: 
-                        <% if @course_latest.user.present? %>
-                          <% if @course_latest.user.full_name.present? %>
-                            <%= @course_latest.user.full_name %>
+                        <% if @course_latest&.user.present? %>
+                          <% if @course_latest&.user.full_name.present? %>
+                            <%= @course_latest&.user.full_name %>
                           <% else %>
                             User
                           <% end %>
