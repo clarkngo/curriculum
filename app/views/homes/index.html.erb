@@ -45,8 +45,8 @@
                 </div>
                 <br/>
                 <div class="float-left">
-                  <% if @course_latest.user&.avatar.present? %>
-                    <%= image_tag @course_latest.user&.avatar.thumb.url, class: 'profile-image'  %>
+                  <% if @course_latest&.user.avatar.present? %>
+                    <%= image_tag @course_latest&.user.avatar.thumb.url, class: 'profile-image'  %>
                   <% else %>
                     <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
                   <% end %>                
