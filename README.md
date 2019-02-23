@@ -91,7 +91,7 @@ aws:
   bucket: my_bucket
 ```
 
-3) Ctrl + C,then `s` then `y` to save.
+3) Ctrl + x,then `s` then `y` to save.
 4) Share master key to team. Should not be pushed to repo.
 
 Common Gotcha: 

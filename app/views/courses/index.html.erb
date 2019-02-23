@@ -117,7 +117,7 @@
                           <% if course.photo? %>
                             <%= image_tag course.photo_header.url, class: 'center' %>
                           <% else %>
-                            <%= image_tag 'default-course-photo-1110x624.38.jpg', class: 'center' %>
+                            <%= image_tag 'default-course-photo-1110x624.38', class: 'center' %>
                           <% end %>  
                           <br/>
                           <%= f.file_field :photo_header, placeholder: "Upload course photo header" %>
