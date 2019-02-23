@@ -10,7 +10,7 @@
           <!-- 1st card -->
           <div class="col-sm">
             <div class="card center" style="height: 50rem; width: 50rem;">
-              <%= link_to course_path(@course_latest, @course_latest.user.id) do %>
+              <%= link_to course_path(@course_latest, @course_latest.id) do %>
                 <% if @course_latest.photo_header? %>
                   <%= image_tag @course_latest.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
                 <% else %>
