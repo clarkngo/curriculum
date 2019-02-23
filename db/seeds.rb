@@ -38,13 +38,6 @@ Course.create(
 
 Course.create(
   user_id: user.id,
-  category_id: preparatory.id,
-  name: 'Operating Systems',
-  description: 'This course examines basic operating system concepts and principles. The concepts include Operating Systems components, architecture, and management. Operating system management will examine process, memory, storage, and security management. Several exercises and hands-on activity reinforce the concepts and principles covered in the course. Course Entry Requirement: IS 306 or CS 306.'
-)
-
-Course.create(
-  user_id: user.id,
   category_id: core.id,
   name: 'Principles of Software Engineering',
   description: 'The Software Engineering discipline covers those activities used to produce and deliver quality code in a consistent manner. This course covers process models, methodologies and architectures for producing code, as well as the project and configuration management processes to guide the software lifecycle. The course also looks at the critical areas of requirements engineering, documentation and metrics. Students mastering this course will be prepared to participate in professional software engineering teams.'

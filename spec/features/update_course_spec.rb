@@ -21,13 +21,10 @@ RSpec.feature "user sign in process", type: :feature do
 
     click_on 'Log in'
 
-    visit course_path(course)
-
-    click_on 'Edit'
+    visit edit_course_path(course)
 
     fill_in("Name", with: "Intro to C++")
     fill_in("Description", with: "This course is an intro to C++.")
-
     # act    
     click_on "Submit!"
 

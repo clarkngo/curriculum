@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @courses = Course.all
+    @courses = Course.search(params[:term])
   end
 
   def new
@@ -23,30 +23,28 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @comment = Comment.new
-    @avatar = @course.user.avatar
+    @avatar = @course.user.avatar if @course.user.present?
   end
 
   def destroy
     @course = Course.find(params[:id])
-    if @course.user != current_user
-      return render plain: 'Not Allowed', status: :forbidden
-    end
+    redirect_to course_path(@course), :flash => { :error => "Insufficient rights!" } if @course.user != current_user
 
     @course.destroy
     flash[:success] = "Successfully deleted a course!"
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def edit
     @course = Course.find_by_id(params[:id])
     return render_not_found if @course.blank?
-    return render_not_found(:forbidden) if @course.user != current_user
+    redirect_to course_path(@course), :flash => { :error => "Insufficient rights!" } if @course.user != current_user
   end
     
   def update
     @course = Course.find_by_id(params[:id])
     return render_not_found if @course.blank?
-    return render_not_found(:forbidden) if @course.user != current_user
+    redirect_to course_path(@course), :flash => { :error => "Insufficient rights!" } if @course.user != current_user
     @course.update_attributes(course_params)
     
     if @course.valid?

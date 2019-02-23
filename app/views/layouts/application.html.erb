@@ -7,8 +7,20 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <!-- Firechat -->
+    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
+    <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>    
+
   </head>
   <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Curriculum</a>
       <button class="navbar-toggler"
@@ -30,8 +42,12 @@
             <%= link_to 'Courses', courses_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Suggest New Course", new_course_path, class: 'nav-link' %>
-          </li>
+
+            <%= form_tag(courses_path, method: :get, class: "form-inline") do %>
+              <%= text_field_tag :term, params[:term], class: "form-control mr-sm-2" %>
+              <%= submit_tag 'Search', name: nil, class: "btn btn-outline-success my-2 my-sm-0" %>
+            <% end %>            
+          </li>          
         </ul>
         <ul class="navbar-nav justify-content-end">
             <% if user_signed_in? %>
@@ -46,7 +62,11 @@
                   </a>
                
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <%= link_to "New Course", new_course_path, class: 'dropdown-item' %>
+
+                    <!-- Button trigger modal New Course -->
+                    <%= link_to 'New Course', '', class: 'dropdown-item', 'data-toggle' => 'modal', 'data-target' => '#newCourseModal' %>
+
+
                     <div class="dropdown-divider"></div>
                     <%= link_to "My Dashboard", dashboard_index_path, class: 'dropdown-item' %>
                     <%= link_to "My Profile", edit_user_registration_path, class: 'dropdown-item' %>
@@ -68,7 +88,100 @@
       </div>
     </nav>
 
-    <div class='container'>
+
+    <!-- Modal New Course -->
+    <div class="modal fade" id="newCourseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                
+            <%= simple_form_for @course do |f| %>
+              <% if @course.photo? %>
+                <%= image_tag @course.photo_header.url, class: 'center' %>
+              <% else %>
+                <%= image_tag 'default-course-photo-1110x624.38.jpg', class: 'center' %>
+              <% end %>  
+              <br/>
+              <%= f.file_field :photo_header, placeholder: "Upload course photo header" %>
+              <i>Please upload a 1110 x 624.38 pixels photo</i>
+              <br/>
+              <br/>
+
+              <%= f.input :category_id, label: 'Category', collection: Category.all %>
+              <br/>
+              <%= f.input :name, label: 'Name', class: 'form-control', 'aria-label': 'Large', 'aria-describedby': 'inputGroup-sizing-default' %>
+              <br/>
+              <%= f.input :description, label: 'Description', class: 'form-control', 'aria-label': 'decription' %>
+              <br/>
+
+              <h3><%= f.label :upload_course_photo %></h3><br />
+
+              <% if @course.photo? %>
+                <%= image_tag @course.photo.thumb.url, class: 'profile-image' %>
+              <% else %>
+                <%= image_tag 'default-course-photo-50x50.jpg', class: 'profile-image' %>
+              <% end %>
+
+              <%= f.file_field :photo, placeholder: "Upload course photo thumbnail" %>
+              <i>Please upload a 50 x 50 pixels photo</i>
+
+              <br/>    
+              <br/>
+              <br/>
+              <%= f.submit "Submit!", class: 'btn-lg btn-primary' %>
+              <br/>
+              <br/>
+            <% end %>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      function login() {
+        // Log the user in via Twitter
+        var provider = new firebase.auth.TwitterAuthProvider();
+        firebase.auth().signInWithPopup(provider).catch(function(error) {
+          console.log("Error authenticating user:", error);
+        });
+      }
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        // Once authenticated, instantiate Firechat with the logged in user
+        if (user) {
+          initChat(user);
+        }
+      });
+
+      function initChat(user) {
+        // Get a Firebase Database ref
+        var chatRef = firebase.database().ref("chat");
+
+        // Create a Firechat instance
+        var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
+
+        // Set the Firechat user
+        chat.setUser(user.uid, user.displayName);
+      }
+    </script>
+    
+    <div id="firechat-wrapper">
+      <button onclick="login('twitter');">Login with Twitter</button>
+    </div>
+
+    <div class=''>
       <%= render 'layouts/flash_messages' %>
       <%= yield %>
     </div>

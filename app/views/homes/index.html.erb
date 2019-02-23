@@ -1,40 +1,136 @@
 <br/>
- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
+<div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    
+    <!-- carousel inner -->
+    <div class="carousel-inner">
 
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <% if @course_latest&.photo_header.present? %>
-        <%= link_to image_tag(@course_latest.photo_header.url), course_path(@course_latest), class: 'd-block w-100 h-450' %>    
-      <% else %>
-        <%= image_tag 'default-course-photo-1110x624.38' %>
-      <% end %>
-    </div>
-    <div class="carousel-item">
-      <% if @course_second_latest&.photo_header.present? %>
-        <%= link_to image_tag(@course_second_latest.photo_header.url), course_path(@course_second_latest), class: 'd-block w-100 h-450' %>    
-      <% else %>
-        <%= image_tag 'default-course-photo-1110x624.38' %>
-      <% end %>
-    </div>
-    <div class="carousel-item">
-      <% if @course_third_latest&.photo_header.present? %>
-        <%= link_to image_tag(@course_third_latest.photo_header.url), course_path(@course_third_latest), class: 'd-block w-100 h-450' %>    
-      <% else %>
-        <%= image_tag 'default-course-photo-1110x624.38' %>
-      <% end %>
-    </div>
+      <div class="carousel-item active">
+        <div class="row">
+          <!-- card -->
+          <div class="col-sm">
+            <div class="card center" style="height: 50rem; width: 50rem;">
+              <%= link_to course_path(@course_latest) do %>
+                <% if @course_latest.photo_header? %>
+                  <%= image_tag @course_latest.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
+                <% else %>
+                  <%= image_tag 'default-course-photo.jpg', class: 'card-img-top' %>
+                <% end %>  
+
+                <div class="card-body">
+                  <br/>
+                  <h2 class="card-title"><%= @course_latest.name %></h2>
+                  <br/>
+                  <h3 class="card-title"><i><%= @course_latest.category.name %></i></h3>
+                  <br/>
+                  <p class="card-text long-text"><%= @course_latest.description %></p>
+                  <br/>
+                  <div class="flex-container">
+                    <div class="card-text">
+                      <p>
+                        <i>
+                          Creator: 
+                          <% if @course_latest.user.present? %>
+                            <% if @course_latest.user.full_name.present? %>
+                              <%= @course_latest.user.full_name %>
+                            <% else %>
+                              User
+                            <% end %>
+                          <% else %>
+                            Curriculum
+                          <% end %>
+                        </i>
+                      </p>
+                    </div>
+                    &nbsp;
+                  </div>
+                  <br/>
+                  <div class="float-left">
+                    <% if @course_latest.user&.avatar.present? %>
+                      <%= image_tag @course_latest.user&.avatar.thumb.url, class: 'profile-image'  %>
+                    <% else %>
+                      <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
+                    <% end %>                
+                  </div>         
+                </div>
+              <% end %>            
+            </div>  
+            <!-- end card -->
+          </div>
+        </div>
+        <!-- end of row -->
+      </div>
+      <!-- end of carousel item active -->
+        
+
+        <% @courses_except_last.order(:user_id).reverse_order.each do |course| %>
+          <div class="carousel-item">
+            <div class="row">
+          
+
+              <!-- card -->
+              <div class="col-sm">
+                <div class="card center" style="height: 50rem; width: 50rem;">
+                  <%= link_to course_path(course) do %>
+                    <% if course.photo_header? %>
+                      <%= image_tag course.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
+                    <% else %>
+                      <%= image_tag 'default-course-photo.jpg', class: 'card-img-top' %>
+                    <% end %>  
+                    <div class="card-body">
+                      <br/>
+                      <h2 class="card-title"><%= course.name %></h2>
+                      <br/>
+                      <h3 class="card-title"><i><%= course.category.name %></i></h3>
+                      <br/>
+                      <p class="card-text long-text"><%= course.description %></p>
+                      <div class="flex-container">
+                        <div class="card-text">
+                          <p>
+                            <i>
+                              Creator: 
+                              <% if course.user.present? %>
+                                <% if course.user.full_name.present? %>
+                                  <%= course.user.full_name %>
+                                <% else %>
+                                  User
+                                <% end %>
+                              <% else %>
+                                Curriculum
+                              <% end %>
+                            </i>
+                          </p>
+                        </div>
+                        &nbsp;
+                      </div>
+                      <br/>
+                      <div class="float-left">
+                        <% if course.user&.avatar.present? %>
+                          <%= image_tag course.user&.avatar.thumb.url, class: 'profile-image'  %>
+                        <% else %>
+                          <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
+                        <% end %>                
+                      </div>         
+                    </div>
+                  </div>
+                <% end %>  
+              </div>
+              <!-- end card -->
+            </div>
+            <!-- end of row -->
+          </div>
+          <!-- end of carousel item -->
+        <% end %>
+        
+
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>

@@ -63,4 +63,5 @@ RSpec.configure do |config|
   # Custom modules
   # errorDevise::MissingWarden: Devise could not find the `Warden::Proxy` instance on your request environment.
   config.include Devise::Test::ControllerHelpers, type: :controller
+  require 'pundit/rspec'
 end

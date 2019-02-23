@@ -11,4 +11,27 @@ class Course < ApplicationRecord
   belongs_to :category
 
   has_many :comments, dependent: :destroy
+
+  def self.search(term)
+
+    if term
+      
+      q = "%#{term}%"
+      
+      includes(:category).where(query_string, 
+            q, q, q).references(:category)
+    else
+      all
+    end
+  end
+
+  def self.query_string
+    fields = ""
+    fields += 'categories.name ILIKE ?'
+    fields += ' OR '
+    fields += 'courses.name ILIKE ?'
+    fields += ' OR '
+    fields += 'description ILIKE ?'
+    fields
+  end  
 end

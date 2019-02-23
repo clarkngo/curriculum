@@ -1,10 +1,13 @@
 <%= image_tag @course.photo_header.url.to_s, class: 'center' %>
 
 <div class="booyah-box col-10 offset-1">
-  <p>Category: <%= @course.category.name %></p>
-  <p>Name: <%= @course.name %></p>
+  <h3>Category: <%= @course.category.name %></h3>
+  <br />
+  <h3>Name: <%= @course.name %></h3>
+  <br />
   <p>Description: <%= @course.description %></p>
-  <p>Creator: <%= @course.user.email %></p>
+  <p><i>Creator: <%= @course.user.full_name if @course.user.present? %></i></p>
+  <br />
   
   <% if @avatar.present? %>
     <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
@@ -15,8 +18,10 @@
   <br />
 
   <div class="float-right">
-    <%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-primary' %>
-    <%= link_to 'Delete', course_path(@course), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
+    <% if current_user == @course.user %>    
+      <%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-primary' %>
+      <%= link_to 'Delete', course_path(@course), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
+    <% end %>
   </div>
 
   <div class="clear"></div>
@@ -26,8 +31,17 @@
   <% @course.comments.reverse_each do |comment| %>
     <div>
       <blockquote>
-        <b><%= comment.user.email %></b> -
-        <%= comment.message %>
+        <div class="media">
+          <% if @avatar.present? %>
+            <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
+          <% else %>
+            <p><%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %></p>
+          <% end %>
+          <div class="media-body">
+            <h5 class="mt-0">&nbsp;&nbsp;<%= current_user.full_name %></h5>
+            <p>&nbsp;&nbsp;&nbsp;<%= comment.message %></p>
+          </div>
+        </div>        
       </blockquote>
     </div>
   <% end %>

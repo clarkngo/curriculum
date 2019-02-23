@@ -12,6 +12,7 @@ gem 'devise',                  '~> 4.5'
 
 gem 'faker',                   '~> 1.9.1'
 gem 'figaro',                  '~> 1.1.1'
+gem 'font-awesome-rails',      '~> 4.7', '>= 4.7.0.4'
 
 gem 'rails',                   '~> 5.2.2'
 
@@ -22,6 +23,7 @@ gem 'mini_magick',             '~> 4.9.2'
 gem 'pg',                      '>= 0.18', '< 2.0'
 gem 'popper_js',               '~> 1.14', '>= 1.14.5'
 gem 'puma',                    '~> 3.11'
+gem 'pundit',                  '~> 2.0', '>= 2.0.1'
 
 gem 'sass-rails',              '~> 5.0'
 
