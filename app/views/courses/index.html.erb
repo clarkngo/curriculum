@@ -3,7 +3,7 @@
   <div class="row">
     <% @courses.order(:user_id).reverse_order.each do |course| %>
       <div class="col-lg 3 col-md-3 col-sm-12 col-xs-12">
-        <div class="card center" style="height: 29rem; width: 26rem;">
+        <div class="card center" style="height: 30rem; width: 26rem;">
 
           <% if course.photo_header? %>
             <%= image_tag course.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
@@ -150,7 +150,6 @@
                           <br/>
                           <br/>
                         <% end %>
-                          
 
                       </div>
                       <div class="modal-footer">
@@ -165,10 +164,7 @@
               <% end %>   
 
             </div>  
-
-
-            
-                       
+                   
           </div>
         </div>
         <br/>
