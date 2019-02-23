@@ -71,7 +71,7 @@
               <!-- card -->
               <div class="col-sm">
                 <div class="card center" style="height: 50rem; width: 50rem;">
-                  <%= link_to course_path(course) do %>
+                  <%= link_to course_path(course.id) do %>
                     <% if course.photo_header? %>
                       <%= image_tag course.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
                     <% else %>
