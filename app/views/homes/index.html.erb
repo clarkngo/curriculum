@@ -10,48 +10,48 @@
           <!-- 1st card -->
           <div class="col-sm">
             <div class="card center" style="height: 50rem; width: 50rem;">
-                <% if @course_latest.photo_header? %>
-                  <%= image_tag @course_latest.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
-                <% else %>
-                  <%= image_tag 'default-course-photo.jpg', class: 'card-img-top' %>
-                <% end %>  
+              <% if @course_latest.photo&_header? %>
+                <%= image_tag @course_latest.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
+              <% else %>
+                <%= image_tag 'default-course-photo.jpg', class: 'card-img-top' %>
+              <% end %>  
 
-                <div class="card-body">
-                  <br/>
-                  <h2 class="card-title"><%= @course_latest.name %></h2>
-                  <br/>
-                  <h3 class="card-title"><i><%= @course_latest.category.name %></i></h3>
-                  <br/>
-                  <p class="card-text long-text"><%= @course_latest.description %></p>
-                  <br/>
-                  <div class="flex-container">
-                    <div class="card-text">
-                      <p>
-                        <i>
-                          Creator: 
-                          <% if @course_latest.user.present? %>
-                            <% if @course_latest.user.full_name.present? %>
-                              <%= @course_latest.user.full_name %>
-                            <% else %>
-                              User
-                            <% end %>
+              <div class="card-body">
+                <br/>
+                <h2 class="card-title"><%= @course_latest.name %></h2>
+                <br/>
+                <h3 class="card-title"><i><%= @course_latest.category.name %></i></h3>
+                <br/>
+                <p class="card-text long-text"><%= @course_latest.description %></p>
+                <br/>
+                <div class="flex-container">
+                  <div class="card-text">
+                    <p>
+                      <i>
+                        Creator: 
+                        <% if @course_latest.user.present? %>
+                          <% if @course_latest.user.full_name.present? %>
+                            <%= @course_latest.user.full_name %>
                           <% else %>
-                            Curriculum
+                            User
                           <% end %>
-                        </i>
-                      </p>
-                    </div>
-                    &nbsp;
+                        <% else %>
+                          Curriculum
+                        <% end %>
+                      </i>
+                    </p>
                   </div>
-                  <br/>
-                  <div class="float-left">
-                    <% if @course_latest.user&.avatar.present? %>
-                      <%= image_tag @course_latest.user&.avatar.thumb.url, class: 'profile-image'  %>
-                    <% else %>
-                      <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
-                    <% end %>                
-                  </div>         
+                  &nbsp;
                 </div>
+                <br/>
+                <div class="float-left">
+                  <% if @course_latest.user&.avatar.present? %>
+                    <%= image_tag @course_latest.user&.avatar.thumb.url, class: 'profile-image'  %>
+                  <% else %>
+                    <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
+                  <% end %>                
+                </div>         
+              </div>
             </div>  
             <!-- end card -->
           </div>
