@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :messages
   has_many :chatrooms, through: :messages
-  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
   def full_name
     "#{first_name} #{last_name}"
