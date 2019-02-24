@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'activeadmin',             '~> 1.4', '>= 1.4.3'
+
 gem 'bootsnap',                '>= 1.1.0', require: false
 gem 'bootstrap',               '~> 4.2.1'
 
@@ -23,7 +25,7 @@ gem 'mini_magick',             '~> 4.9.2'
 gem 'pg',                      '>= 0.18', '< 2.0'
 gem 'popper_js',               '~> 1.14', '>= 1.14.5'
 gem 'puma',                    '~> 3.11'
-gem 'pundit',                  '~> 2.0', '>= 2.0.1'
+gem 'pundit',                  '~> 2.0',  '>= 2.0.1'
 
 gem 'sass-rails',              '~> 5.0'
 
