@@ -31,38 +31,7 @@
       <% if @courses.empty? %>
         <h2 class="hero-text">You have not created to any courses =)</h2>
       <% else %>
-        <table class="table table-striped table-dark">
-          <thead> 
-            <tr>
-              <th scope="col">Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @courses.each do |course| %>
-              <tr>
-                <th scope="row">
-                  <% if course.photo? %>                    
-                    <%= image_tag course.photo.thumb.url.to_s %>
-                  <% else %>
-                    <%= image_tag 'default-course-photo-50x50.jpg', class: 'profile-image' %>
-                  <% end %>
-                  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <%= course.name %>
-                  
-                </th>
-                <th>
-                  <div class="float-right">
-                    <%= link_to 'Show', course_path(course), class: 'btn btn-primary' %>
-                    &nbsp; &nbsp;
-                    <%= link_to 'Edit', edit_course_path(course), class: 'btn btn-secondary' %>
-                    &nbsp; &nbsp;
-                    <%= link_to 'Delete', course_path(course), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
-                  </div>
-                </th>
-              </tr>
-            <% end %>
-
-          </tbody>
-        </table>
+        <%= render 'courses/courses' %>
       <% end %>    
     </div>
     

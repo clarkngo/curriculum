@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.search(params[:term])
+    @comment = Comment.new
   end
 
   def new

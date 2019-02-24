@@ -9,6 +9,7 @@ gem 'bootsnap',                '>= 1.1.0', require: false
 gem 'bootstrap',               '~> 4.2.1'
 
 gem 'carrierwave',             '~> 1.3.1'
+gem 'coderay',                 '~> 1.1', '>= 1.1.2'
 
 gem 'devise',                  '~> 4.5'
 
@@ -27,6 +28,7 @@ gem 'popper_js',               '~> 1.14', '>= 1.14.5'
 gem 'puma',                    '~> 3.11'
 gem 'pundit',                  '~> 2.0',  '>= 2.0.1'
 
+gem 'redcarpet',               '~> 3.4'
 gem 'redis',                   '~> 4.1'
 
 gem 'sass-rails',              '~> 5.0'

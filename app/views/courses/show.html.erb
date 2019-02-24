@@ -39,7 +39,7 @@
           <% end %>
           <div class="media-body">
             <h5 class="mt-0">&nbsp;&nbsp;<%= current_user.full_name %></h5>
-            <p>&nbsp;&nbsp;&nbsp;<%= comment.message %></p>
+            <p>&nbsp;&nbsp;&nbsp;<%= markdown(comment.message) %></p>
           </div>
         </div>        
       </blockquote>

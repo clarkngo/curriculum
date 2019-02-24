@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
       flash[:error] = "Unable to add blank comment!" 
     end
     
-    redirect_to course_path(@course)
+    redirect_to request.referrer
   end
 
   private
