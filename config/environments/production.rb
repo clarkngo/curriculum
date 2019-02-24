@@ -95,4 +95,6 @@ Rails.application.configure do
 
   # Custom configurations for curriculum app
   config.action_mailer.default_url_options = { host: 'https://curriculum-clark-ngo.herokuapp.com/' }
+  config.web_socket_server_url = "wss://curriculum-clark-ngo.herokuapp.com/cable" 
+  config.action_cable.allowed_request_origins = ['https://curriculum-clark-ngo.herokuapp.com', 'http://curriculum-clark-ngo.herokuapp.com']  
 end

@@ -19,3 +19,4 @@
 //= require turbolinks
 //= require tether
 //= require_directory .
+//= require_tree ./channels
