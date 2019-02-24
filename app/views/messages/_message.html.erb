@@ -10,7 +10,7 @@
   <div class="media-body">
     <h5 class="mt-0">
       &nbsp;
-      <% if message.user.first_name != nil %>
+      <% if message.user.present? %>
         <%= message.user.full_name %>
       <% else %>
         Anonymous
