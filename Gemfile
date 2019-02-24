@@ -27,6 +27,8 @@ gem 'popper_js',               '~> 1.14', '>= 1.14.5'
 gem 'puma',                    '~> 3.11'
 gem 'pundit',                  '~> 2.0',  '>= 2.0.1'
 
+gem 'redis',                   '~> 4.1'
+
 gem 'sass-rails',              '~> 5.0'
 
 gem 'simple_form',             '~> 4.1.0'
