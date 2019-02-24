@@ -1,4 +1,5 @@
 class ChatroomsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def show
     @chatroom = Chatroom.includes(:messages).find_by(params[:id])
     @message = Message.new

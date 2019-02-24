@@ -2,6 +2,9 @@ AdminUser.destroy_all
 User.destroy_all
 Course.destroy_all
 Category.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
+Comment.destroy_all
 
 AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
 
