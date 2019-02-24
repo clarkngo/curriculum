@@ -8,47 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyBJwK1H1hOn9-5ML980dVN08BMycmwOCkg",
-        authDomain: "curriculum-fe34b.firebaseapp.com",
-        databaseURL: "https://curriculum-fe34b.firebaseio.com",
-        projectId: "curriculum-fe34b",
-        storageBucket: "curriculum-fe34b.appspot.com",
-        messagingSenderId: "569097818811"
-      };
-      firebase.initializeApp(config);
-    </script>
-    <script>
-      function login() {
-        // Log the user in via Twitter
-        var provider = new firebase.auth.TwitterAuthProvider();
-        firebase.auth().signInWithPopup(provider).catch(function(error) {
-          console.log("Error authenticating user:", error);
-        });
-      }
-
-      firebase.auth().onAuthStateChanged(function(user) {
-        // Once authenticated, instantiate Firechat with the logged in user
-        if (user) {
-          initChat(user);
-        }
-      });
-
-      function initChat(user) {
-        // Get a Firebase Database ref
-        var chatRef = firebase.database().ref("chat");
-
-        // Create a Firechat instance
-        var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
-
-        // Set the Firechat user
-        chat.setUser(user.uid, user.displayName);
-      }      
-    </script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
@@ -188,12 +147,6 @@
         </div>
       </div>
     </div>
-
-
-    <div id="firechat-wrapper">
-      <button onclick="login('twitter');">Login with Twitter</button>
-    </div>
-    
 
     <div class=''>
       <%= render 'layouts/flash_messages' %>
