@@ -24,16 +24,16 @@ RSpec.feature "user add a course photo process", type: :feature do
     # visit courses page
     click_on 'Courses'
 
-    click_on 'Show Course'
+    click_on 'Show'
     click_on 'Edit'
 
-    fill_in("Name", with: "Intro to C++")
-    fill_in("Description", with: "This course is an intro to C++.")
-    attach_file('Upload course photo thumbnail', Rails.root + 'spec/fixtures/images/default-course-photo-50x50.jpg')
-    attach_file('Upload course photo header', Rails.root + 'spec/fixtures/images/default-course-photo-1110x624.38.jpg')
+    fill_in("Name", with: "Intro to C++", :match => :prefer_exact)
+    fill_in("Description", with: "This course is an intro to C++.", :match => :prefer_exact)
+    attach_file('Upload course photo thumbnail', Rails.root + 'spec/fixtures/images/default-course-photo-50x50.jpg', :match => :prefer_exact)
+    attach_file('Upload course photo header', Rails.root + 'spec/fixtures/images/default-course-photo-1110x624.38.jpg', :match => :prefer_exact)
 
     # act    
-    click_on "Submit!"
+    click_on "Submit!", :match => :prefer_exact
 
     # assert
     expect(page).to have_text("Course was succesfully updated.")

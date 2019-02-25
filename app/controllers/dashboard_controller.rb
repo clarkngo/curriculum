@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
     if current_user
       @comments = current_user.comments
       @courses = current_user.courses
+      @comment = Comment.new
     end
   end
-  
 end

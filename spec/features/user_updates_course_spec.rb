@@ -25,11 +25,11 @@ RSpec.feature "user updates a course process", type: :feature do
 
     click_on 'Edit'
 
-    fill_in("Name", with: "Intro to C++")
-    fill_in("Description", with: "This course is an intro to C++.")
+    fill_in("Name", with: "Intro to C++", :match => :prefer_exact)
+    fill_in("Description", with: "This course is an intro to C++.", :match => :prefer_exact)
 
     # act    
-    click_on "Submit!"
+    click_on "Submit!", :match => :prefer_exact
 
     # assert
     expect(page).to have_text("Course was succesfully updated.")

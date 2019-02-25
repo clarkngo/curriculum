@@ -22,8 +22,8 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
     @comment = Comment.new
+    @course = Course.find(params[:id])
     @avatar = @course.user.avatar if @course.user.present?
   end
 

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'homes#index'
   
   resources :courses do
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
   end
   
   resources :dashboard, only: :index, :format => false

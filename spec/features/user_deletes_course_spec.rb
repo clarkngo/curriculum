@@ -21,7 +21,7 @@ RSpec.feature "user deletes a course process", type: :feature do
 
     click_on 'Log in'
 
-    visit course_path(course)
+    click_on 'Courses'
 
     # act    
     click_on 'Delete'

@@ -86,10 +86,10 @@
                       </div>     
                     </div>
                     <div style="margin:10px;">
-                    <%= simple_form_for @comment, url: course_comments_path(course)  do |f| %>
-                      <%= f.input :message, placeholder: 'Add a Comment' %>
-                      <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-                    <% end %>
+                      <%= simple_form_for @comment, url: course_comments_path(course)  do |f| %>
+                        <%= f.input :message, placeholder: 'Add a Comment' %>
+                        <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+                      <% end %>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
