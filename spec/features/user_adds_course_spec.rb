@@ -7,15 +7,14 @@ RSpec.feature "user adds a course process", type: :feature do
     user = FactoryBot.create(:user)
     category = FactoryBot.create(:category)
 
-    visit '/'
-    click_on 'Sign in'
+    visit '/users/sign_in'
 
     fill_in 'Email', :with => user.email
     fill_in 'Password', :with => user.password
 
     click_on 'Log in'
     
-    visit new_course_path
+    visit '/courses/new'
 
     select("Preparatory", :from => "Category", :match => :prefer_exact)
     fill_in 'Name', :with => "Intro to ML", :match => :prefer_exact

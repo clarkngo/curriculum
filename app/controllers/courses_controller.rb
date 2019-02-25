@@ -18,12 +18,13 @@ class CoursesController < ApplicationController
       redirect_to course_path(@course)
     else
       render :new, status: :unprocessable_entity
-    end
+    end 
   end
 
   def show
-    @comment = Comment.new
     @course = Course.find(params[:id])
+    @comment = Comment.new
+    @course_latest = Course.last
     @avatar = @course.user.avatar if @course.user.present?
   end
 

@@ -1,7 +1,7 @@
 <%= image_tag @course.photo_header.url.to_s, class: 'center' %>
 
 <div class="booyah-box col-10 offset-1">
-  <h3>Category: <%= @course.category.name %></h3>
+  <h3>Category: <%= @course.category&.name %></h3>
   <br />
   <h3>Name: <%= @course.name %></h3>
   <br />
@@ -58,7 +58,7 @@
     </blockquote>
   <% end %>
 
-  <%= simple_form_for @comment, url: course_comments_path(@course)  do |f| %>
+  <%= simple_form_for @comment, url: course_comments_path(@course.id)  do |f| %>
     <%= f.input :message, placeholder: 'Add a Comment' %>
     <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
   <% end %>

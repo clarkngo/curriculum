@@ -11,48 +11,50 @@
           <!-- 1st card -->
           <div class="col-sm">
             <div class="card center" style="height: 40rem; width: 40rem;">
-              <%= link_to course_path(@course_latest.id) do %>
-                <% if @course_latest&.photo_header? %>
-                  <%= image_tag @course_latest.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
-                <% else %>
-                  <%= image_tag 'default-course-photo.jpg', class: 'card-img-top' %>
-                <% end %>  
+              <% if @course_latest.present? %>
+                <%= link_to course_path(@course_latest&.id) do %>
+                  <% if @course_latest&.photo_header? %>
+                    <%= image_tag @course_latest.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
+                  <% else %>
+                    <%= image_tag 'default-course-photo.jpg', class: 'card-img-top' %>
+                  <% end %>  
 
-                <div class="card-body">
-                  <h3 class="card-title"><%= @course_latest&.name %></h3>
-                  <br/>
-                  <h4 class="card-title"><i><%= @course_latest&.category&.name %></i></h4>
-                  <br/>
-                  <p class="card-text long-text"><%= @course_latest&.description %></p>
-                  <div class="flex-container">
+                  <div class="card-body">
+                    <h3 class="card-title"><%= @course_latest&.name %></h3>
                     <br/>
-                    <div class="card-text">
-                      <p>
-                        <i>
-                          Creator: 
-                          <% if @course_latest&.user.present? %>
-                            <% if @course_latest&.user.full_name.present? %>
-                              <%= @course_latest&.user.full_name %>
+                  <h4 class="card-title"><i><%= @course_latest&.category&.name %></i></h4>
+                    <br/>
+                    <p class="card-text long-text"><%= @course_latest&.description %></p>
+                    <div class="flex-container">
+                      <br/>
+                      <div class="card-text">
+                        <p>
+                          <i>
+                            Creator: 
+                            <% if @course_latest&.user.present? %>
+                              <% if @course_latest&.user.full_name.present? %>
+                                <%= @course_latest&.user.full_name %>
+                              <% else %>
+                                User
+                              <% end %>
                             <% else %>
-                              User
+                              Curriculum
                             <% end %>
-                          <% else %>
-                            Curriculum
-                          <% end %>
-                        </i>
-                      </p>
+                          </i>
+                        </p>
+                      </div>
+                      &nbsp;
                     </div>
-                    &nbsp;
+                    <div class="float-left">
+                      <% if @course_latest&.user&.avatar.present? %>
+                        <%= image_tag @course_latest&.user&.avatar.thumb.url, class: 'profile-image'  %>
+                      <% else %>
+                        <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
+                      <% end %>                
+                    </div>         
                   </div>
-                  <div class="float-left">
-                    <% if @course_latest&.user&.avatar.present? %>
-                      <%= image_tag @course_latest&.user&.avatar.thumb.url, class: 'profile-image'  %>
-                    <% else %>
-                      <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
-                    <% end %>                
-                  </div>         
-                </div>
-              <% end %>
+                <% end %>
+              <%end %>
             </div>  
             <!-- end card -->
           </div>
