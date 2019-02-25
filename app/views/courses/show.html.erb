@@ -36,7 +36,7 @@
           <div class="row">
             <div class="col-1">
               <% if @avatar.present? %>
-                <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
+                <p><%= image_tag comment.user&.avatar.thumb.url, class: 'profile-image' %></p>
               <% else %>
                 <p><%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %></p>
               <% end %>
