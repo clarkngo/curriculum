@@ -8,6 +8,7 @@ RSpec.feature "user adds a course process", type: :feature do
     category = FactoryBot.create(:category)
 
     visit '/'
+    
     click_on 'Sign in'
 
     fill_in 'Email', :with => user.email

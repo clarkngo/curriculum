@@ -14,6 +14,7 @@ RSpec.feature "user add a course photo process", type: :feature do
     )
 
     visit '/'
+    
     click_on 'Sign in'
 
     fill_in 'Email', :with => user.email
@@ -21,10 +22,10 @@ RSpec.feature "user add a course photo process", type: :feature do
 
     click_on 'Log in'
 
-    # visit courses page
     click_on 'Courses'
 
     click_on 'Show'
+
     click_on 'Edit'
 
     fill_in("Name", with: "Intro to C++", :match => :prefer_exact)

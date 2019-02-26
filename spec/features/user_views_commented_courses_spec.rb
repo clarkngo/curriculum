@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "list commented course by current user process", type: :feature do
-  scenario 'list commented course by current user' do
+RSpec.feature "user views commented courses process", type: :feature do
+  scenario 'user views commented courses' do
 
     # arrange
     user = FactoryBot.create(:user)
@@ -14,6 +14,7 @@ RSpec.feature "list commented course by current user process", type: :feature do
     )
 
     visit '/'
+    
     click_on 'Sign in'
 
     fill_in 'Email', :with => user.email

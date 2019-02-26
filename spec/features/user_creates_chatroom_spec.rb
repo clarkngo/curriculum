@@ -1,12 +1,13 @@
 require 'rails_helper'
 
-RSpec.feature "user create chatroom process", type: :feature do
-  scenario 'user create chatroom' do
+RSpec.feature "user creates chatroom process", type: :feature do
+  scenario 'user creates chatroom' do
 
     # arrange
     user = FactoryBot.create(:user)
 
     visit '/'
+    
     click_on 'Sign in'
 
     fill_in 'Email', :with => user.email

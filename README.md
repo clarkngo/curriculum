@@ -6,9 +6,19 @@ This project aims to solve the problem of proposing a new curriculum in computer
 
 <a href="https://github.com/clarkngo/curriculum/projects">Project Requirements</a>
 
-## Soon!
-
 This app powers curriculum located [http://curriculum-clark-ngo.herokuapp.com] (Heroku Project URL)
+
+## Features
+- Admin panel
+- User management
+- Course creation
+- Commenting
+- Search
+- Live chat
+
+## Future features
+- Notifications
+- Videos
 
 ## Getting Started
 
@@ -91,8 +101,9 @@ aws:
   bucket: my_bucket
 ```
 
-3) Ctrl + x,then `s` then `y` to save.
-4) Share master key to team. Should not be pushed to repo.
+3) `Ctrl + x`, then `Ctrl + s` then `y` to save.
+4) `Ctrl + x`, then `Ctrl + c` to exit.
+5) Share master key to team. Should not be pushed to repo.
 
 Common Gotcha: 
 ```
@@ -125,4 +136,3 @@ curriculum is released under the [MIT license](https://mit-license.org).
 ## Copyright
 
 copyright:: (c) Copyright 2018 Clark Jason Ngo. All Rights Reserved.
-

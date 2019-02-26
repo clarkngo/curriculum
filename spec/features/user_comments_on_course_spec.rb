@@ -14,6 +14,7 @@ RSpec.feature "user adds a comment on a course process", type: :feature do
     )
 
     visit '/'
+
     click_on 'Sign in'
 
     fill_in 'Email', :with => user.email
@@ -45,6 +46,7 @@ RSpec.feature "user adds a comment on a course process", type: :feature do
     )
 
     visit '/'
+    
     click_on 'Sign in'
 
     fill_in 'Email', :with => user.email

@@ -12,6 +12,7 @@ class Course < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  # build sql query
   def self.search(term)
 
     if term

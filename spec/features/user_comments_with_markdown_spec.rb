@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "user deletes a course process", type: :feature do
-  scenario 'user deletes a course' do
+RSpec.feature "user adds a comment on course with markdown process", type: :feature do
+  scenario 'user adds a comment on course with markdown' do
 
     # arrange
     user = FactoryBot.create(:user)
@@ -24,10 +24,22 @@ RSpec.feature "user deletes a course process", type: :feature do
 
     click_on 'Courses'
 
+    click_on 'Show'
+
+    fill_in("Add a Comment", with: 
+      "
+        ```  
+        def index
+          @courses = Course.search(params[:term])
+          @comment = Comment.new
+        end
+        ```
+      ", :match => :prefer_exact)
+
     # act    
-    click_on 'Delete'
+    click_on 'Add a Comment'
 
     # assert
-    expect(page).to have_text("Successfully deleted a course!")
+    expect(page).to_not have_text("``````")
   end
 end

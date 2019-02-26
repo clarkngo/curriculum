@@ -11,7 +11,7 @@
     <%= action_cable_meta_tag %>
   </head>
   <body>
-
+    <!-- top nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Curriculum</a>
       <button class="navbar-toggler"
@@ -55,13 +55,14 @@
                     <% end %>
                   </a>
                
+                  <!-- user icon dropdown items -->
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
                     <!-- Button trigger modal New Course -->
                     <%= link_to 'New Course', '', class: 'dropdown-item', 'data-toggle' => 'modal', 'data-target' => '#newCourseModal' %>
 
-
                     <div class="dropdown-divider"></div>
+
                     <%= link_to "My Dashboard", dashboard_index_path, class: 'dropdown-item' %>
                     <%= link_to "My Profile", edit_user_registration_path, class: 'dropdown-item' %>
                     <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: 'dropdown-item' %>
@@ -81,6 +82,7 @@
         </ul>
       </div>
     </nav>
+    <!-- end of top nav bar -->
 
 
     <!-- Modal New Course -->
@@ -137,10 +139,11 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
+
         </div>
       </div>
     </div>
-
+    
     <div class=''>
       <%= render 'layouts/flash_messages' %>
       <%= yield %>

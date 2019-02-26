@@ -1,3 +1,4 @@
+<!-- message form for chatroom -->
 <%= form_for message, remote: true, authenticity_token: true do |f| %>
   <%= f.label :your_message %>:
   <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>

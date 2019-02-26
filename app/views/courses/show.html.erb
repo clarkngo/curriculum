@@ -1,6 +1,8 @@
 <%= image_tag @course.photo_header.url.to_s, class: 'center' %>
 
 <div class="booyah-box col-10 offset-1">
+
+  <!-- course information -->
   <h3>Category: <%= @course.category&.name %></h3>
   <br />
   <h3>Name: <%= @course.name %></h3>
@@ -17,15 +19,19 @@
 
   <br />
 
+  <!-- modify buttons -->
   <div class="float-right">
     <% if current_user == @course.user %>    
       <%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-primary' %>
       <%= link_to 'Delete', course_path(@course), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
     <% end %>
   </div>
+  <!-- end of modify buttons -->
 
   <div class="clear"></div>
   <div class="clear"></div>
+
+  <!-- comment section -->
   <h1>Comments</h1>
 
   <% @course.comments.reverse_each do |comment| %>
@@ -62,5 +68,7 @@
     <%= f.input :message, placeholder: 'Add a Comment' %>
     <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
   <% end %>
+  <!-- end of comment section -->
 
 </div>
+<!-- end of class booyah box -->

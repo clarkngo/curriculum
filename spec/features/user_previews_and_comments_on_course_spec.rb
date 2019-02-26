@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "user sign in process", type: :feature do
-  scenario 'user sign in' do
+RSpec.feature "user adds a course process", type: :feature do
+  scenario 'user adds a course' do
 
     # arrange
     user = FactoryBot.create(:user)
@@ -22,14 +22,15 @@ RSpec.feature "user sign in process", type: :feature do
 
     click_on 'Log in'
 
-    visit edit_course_path(course)
+    click_on 'Courses'
 
-    fill_in("Name", with: "Intro to C++", :match => :prefer_exact)
-    fill_in("Description", with: "This course is an intro to C++.", :match => :prefer_exact)
+    click_on 'Preview', :match => :prefer_exact
+    fill_in("Add a Comment", with: "The course is way too advanced for me.")
+
     # act    
-    click_on "Submit!", :match => :prefer_exact
+    click_on "Add a Comment"
 
     # assert
-    expect(page).to have_text("Course was succesfully updated.")
+    expect(page).to have_text("Successfully added a comment!")
   end
 end

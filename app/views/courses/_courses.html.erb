@@ -4,7 +4,6 @@
     <% @courses.order(:user_id).reverse_order.each do |course| %>
       <div class="col-lg 3 col-md-3 col-sm-12 col-xs-12">
         <div class="card center" style="height: 30rem; width: 26rem;">
-
           <% if course.photo_header? %>
             <%= image_tag course.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
           <% else %>
@@ -14,7 +13,6 @@
             <h5 class="card-title"><%= course.name %></h5>
             <h6 class="card-title"><i><%= course.category.name %></i></h6>
             <p class="card-text long-text"><%= course.description %></p>
-
             <div class="flex-container">
               <div class="card-text">
                 <p>
@@ -34,7 +32,7 @@
               </div>
               &nbsp;
             </div>
-
+            
             <div class="float-left">
               <% if course.user&.avatar.present? %>
                 <%= image_tag course.user&.avatar.thumb.url, class: 'profile-image'  %>
@@ -85,15 +83,18 @@
                         <% end %>                
                       </div>     
                     </div>
+
                     <div style="margin:10px;">
                       <%= simple_form_for @comment, url: course_comments_path(course)  do |f| %>
                         <%= f.input :message, placeholder: 'Add a Comment' %>
                         <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
                       <% end %>
                     </div>
+
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
+
                   </div>
                 </div>
 
@@ -160,9 +161,11 @@
                         <% end %>
 
                       </div>
+
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -172,16 +175,24 @@
               <% end %>   
 
             </div>  
+            <!-- end of class float right -->
                    
           </div>
+          <!-- end of card body -->
+
         </div>
+        <!-- end of card -->
+
         <br/>
         <br/>
       </div>
+      <!-- end of grid columns -->
+
     <% end %>
+    <!-- end of courses -->
+
   </div>
+  <!-- end of div class row -->
+
 </div>
-
-
-
-
+<!-- end of div class container -->

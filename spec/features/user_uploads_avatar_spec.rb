@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user upload profile picture process", type: :feature do
   scenario 'user upload profile picture' do
+    
     # arrange
     visit root_path
 
