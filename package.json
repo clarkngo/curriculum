@@ -2,6 +2,7 @@
   "name": "curriculum",
   "private": true,
   "dependencies": {
-    "firechat": "^3.0.1"
+    "firechat": "^3.0.1",
+    "hoek": ">=4.2.1"
   }
 }
