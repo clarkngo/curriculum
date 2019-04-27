@@ -4,11 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 gem 'bootsnap',                '>= 1.1.0', require: false
-gem 'bootstrap',               '~> 4.2.1'
+gem 'bootstrap',               '~> 4.3.1'
 
 gem 'carrierwave',             '~> 1.3.1'
 
-gem 'devise',                  '~> 4.5'  
+gem 'devise',                  '~> 4.6.0'  
 
 gem 'faker',                   '~> 1.9.1'
 gem 'figaro',                  '~> 1.1.1'
