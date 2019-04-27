@@ -60,7 +60,7 @@ $ cd curriculum
 ## Starting the local server
 
 ```
-$ rails servers
+$ rails server
 ```
 
 ## Production Deployment
