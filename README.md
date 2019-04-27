@@ -8,12 +8,17 @@ This project aims to solve the problem of proposing a new curriculum in computer
 
 This app is hosted on [Heroku](http://curriculum-clark-ngo.herokuapp.com)
 
-##Features
+## Features
 Admin panel
+
 User management
+
 Course creation
+
 Commenting
+
 Search
+
 Live chat
 
 ## Getting Started
