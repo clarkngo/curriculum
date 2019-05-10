@@ -5,9 +5,26 @@ This project aims to solve the problem of proposing a new curriculum in computer
 
 ## View Project Requirements
 
-<a href="https://github.com/clarkngo/curriculum/projects">Project Requirements</a>
+[Project Requirements](https://github.com/clarkngo/curriculum/projects)
 
+<<<<<<< HEAD
 This app powers curriculum located [http://curriculum-clark-ngo.herokuapp.com] (Heroku Project URL)
+=======
+This app is hosted on [Heroku](http://curriculum-clark-ngo.herokuapp.com)
+
+## Features
+Admin panel
+
+User management
+
+Course creation
+
+Commenting
+
+Search
+
+Live chat
+>>>>>>> 93f0e2486a0ae2e5b606f9d48187a64307ec9c1e
 
 ## Features
 - Admin panel
@@ -74,18 +91,14 @@ $ cd curriculum
 
 ```
 $ rails server
-
-   or
-
-$ rails s
 ```
 
 ## Production Deployment
 
-  ```
-  $ git push heroku master
-  $ heroku run rake db:migrate
-  ```
+```
+$ git push heroku master
+$ heroku run rake db:migrate
+```
 
 ## Setups
 
