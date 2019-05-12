@@ -32,7 +32,25 @@
         <div class="tab-pane fade show active" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">  
           <h1 class="text-center" style="color: white">My Account</h1>    
           <br/>
-          <h2><%= link_to "Edit My Profile", edit_user_registration_path %></h2>
+          <div class="booyah-box">
+            <h2>Edit User</h2>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= devise_error_messages! %>
+              <div class="field">
+                <%= f.label :first_name %><br />
+                <%= f.text_field :first_name, class: 'form-control' %>
+              </div>            
+              <div class="field">
+                <h3><%= f.label :current_password %></h3> <i>(we need your current password to confirm your changes)</i><br />
+                <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
+              </div>              
+              <br/>
+              <div class="actions">
+                <%= f.submit "Update", class: 'btn btn-primary' %>
+              </div>        
+              <br/>      
+            <% end %>
+          </div>
         </div>
         <!-- end of Tab Account -->
         
