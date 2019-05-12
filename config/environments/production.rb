@@ -27,7 +27,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -95,4 +95,7 @@ Rails.application.configure do
 
   # Custom configurations for curriculum app
   config.action_mailer.default_url_options = { host: 'https://curriculum-clark-ngo.herokuapp.com/' }
+  # conifguration for live chat updates
+  config.web_socket_server_url = "wss://curriculum-clark-ngo.herokuapp.com/cable" 
+  config.action_cable.allowed_request_origins = ['https://curriculum-clark-ngo.herokuapp.com', 'http://curriculum-clark-ngo.herokuapp.com']  
 end

@@ -1,5 +1,8 @@
 {
   "name": "curriculum",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "firechat": "^3.0.1",
+    "hoek": ">=4.2.1"
+  }
 }

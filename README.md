@@ -1,4 +1,5 @@
 # curriculum
+[![Coverage Status](https://coveralls.io/repos/github/clarkngo/curriculum/badge.svg?branch=master)](https://coveralls.io/github/clarkngo/curriculum?branch=master)
 
 This project aims to solve the problem of proposing a new curriculum in computer science, to replace an old curriculum.
 
@@ -6,20 +7,17 @@ This project aims to solve the problem of proposing a new curriculum in computer
 
 [Project Requirements](https://github.com/clarkngo/curriculum/projects)
 
-This app is hosted on [Heroku](http://curriculum-clark-ngo.herokuapp.com)
-
 ## Features
-Admin panel
+- Admin panel
+- User management
+- Course creation
+- Commenting
+- Search
+- Live chat
 
-User management
-
-Course creation
-
-Commenting
-
-Search
-
-Live chat
+## Future features
+- Notifications
+- Videos
 
 ## Getting Started
 
@@ -33,9 +31,23 @@ Live chat
 
 ## Create Account in GitHub and Heroku
 
-[GitHub](https://github.com/)</a>
+<a href="https://github.com/">GitHub</a>
 
-[Heroku](https://www.heroku.com/)
+<a href="https://www.heroku.com/">Heroku</a>
+
+## Configure Heroku with SSH Keys
+update the heroku-cli with the following command:
+```
+wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+heroku login
+heroku keys:add
+```
+
+## Test
+```
+cd /curriculum
+rails s -b 0.0.0.0 -p 3000
+```
 
 
 ## Clone this repository
@@ -85,8 +97,9 @@ aws:
   bucket: my_bucket
 ```
 
-3) Ctrl + C,then `s` then `y` to save.
-4) Share master key to team. Should not be pushed to repo.
+3) `Ctrl + x`, then `Ctrl + s` then `y` to save.
+4) `Ctrl + x`, then `Ctrl + c` to exit.
+5) Share master key to team. Should not be pushed to repo.
 
 Common Gotcha: 
 ```
@@ -119,4 +132,3 @@ curriculum is released under the [MIT license](https://mit-license.org).
 ## Copyright
 
 copyright:: (c) Copyright 2018 Clark Jason Ngo. All Rights Reserved.
-

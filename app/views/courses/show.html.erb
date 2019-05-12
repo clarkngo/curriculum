@@ -1,37 +1,74 @@
+<%= image_tag @course.photo_header.url.to_s, class: 'center' %>
+
 <div class="booyah-box col-10 offset-1">
-  <p>Category: <%= @course.category.name %></p>
-  <p>Name: <%= @course.name %></p>
+
+  <!-- course information -->
+  <h3>Category: <%= @course.category&.name %></h3>
+  <br />
+  <h3>Name: <%= @course.name %></h3>
+  <br />
   <p>Description: <%= @course.description %></p>
-  <p>Creator: <%= @course.user.email %></p>
+  <p><i>Creator: <%= @course.user.full_name if @course.user.present? %></i></p>
+  <br />
+  
   <% if @avatar.present? %>
     <p><%= image_tag @course.user.avatar.thumb.url, class: 'profile-image' %></p>
   <% else %>
     <p><%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %></p>
   <% end %>
 
-   <br />
+  <br />
 
-   <div class="float-right">
-    <%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-primary' %>
-    <%= link_to 'Delete', course_path(@course), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
+  <!-- modify buttons -->
+  <div class="float-right">
+    <% if current_user == @course.user %>    
+      <%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-primary' %>
+      <%= link_to 'Delete', course_path(@course), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
+    <% end %>
   </div>
+  <!-- end of modify buttons -->
 
   <div class="clear"></div>
   <div class="clear"></div>
+
+  <!-- comment section -->
   <h1>Comments</h1>
 
   <% @course.comments.reverse_each do |comment| %>
-    <div>
-      <blockquote>
-        <b><%= comment.user.email %></b> - 
-        <%= comment.message %>
-      </blockquote>
-    </div>
+    <br/>
+    <blockquote>
+      <div class="media">
+        <div class="media-body">
+          <div class="row">
+            <div class="col-1">
+              <% if comment.user&.avatar.present? %>
+                <p><%= image_tag comment.user&.avatar.thumb.url, class: 'profile-image' %></p>
+              <% else %>
+                <p><%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %></p>
+              <% end %>
+            </div>
+            <div class="col-11">
+              <h5 class="mt-0">
+                <% if comment.user&.first_name? %>
+                  <%= comment.user&.full_name %>
+                <% else %>
+                  Anonymous
+                <% end %>              
+              </h5>
+              <p><%= markdown(comment.message) %></p>
+              <p style="text-align:right;"><%= comment.created_at %></p>
+            </div>
+          </div>
+        </div>
+      </div>        
+    </blockquote>
   <% end %>
 
-  <%= simple_form_for @comment, url: course_comments_path(@course)  do |f| %>
+  <%= simple_form_for @comment, url: course_comments_path(@course.id)  do |f| %>
     <%= f.input :message, placeholder: 'Add a Comment' %>
     <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
   <% end %>
+  <!-- end of comment section -->
 
 </div>
+<!-- end of class booyah box -->

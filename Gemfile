@@ -3,15 +3,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'activeadmin',             '~> 1.4', '>= 1.4.3'
+
 gem 'bootsnap',                '>= 1.1.0', require: false
+
 gem 'bootstrap',               '~> 4.3.1'
 
+
 gem 'carrierwave',             '~> 1.3.1'
+gem 'coderay',                 '~> 1.1', '>= 1.1.2'
+gem 'coveralls',                           require: false
+
 
 gem 'devise',                  '~> 4.6.0'  
 
+
 gem 'faker',                   '~> 1.9.1'
 gem 'figaro',                  '~> 1.1.1'
+gem 'font-awesome-rails',      '~> 4.7', '>= 4.7.0.4'
 
 gem 'rails',                   '~> 5.2.2'
 
@@ -20,8 +29,12 @@ gem 'jquery-rails',            '~> 4.3.3'
 gem 'mini_magick',             '~> 4.9.2'
 
 gem 'pg',                      '>= 0.18', '< 2.0'
-gem 'popper_js',               '~> 1.14', '>= 1.14.5'
+gem 'popper_js',               '< 2', '>= 1.12.9'
 gem 'puma',                    '~> 3.11'
+gem 'pundit',                  '~> 2.0',  '>= 2.0.1'
+
+gem 'redcarpet',               '~> 3.4'
+gem 'redis',                   '~> 4.1'
 
 gem 'sass-rails',              '~> 5.0'
 

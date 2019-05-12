@@ -1,8 +1,12 @@
-
-
+AdminUser.destroy_all
 User.destroy_all
 Course.destroy_all
 Category.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
+Comment.destroy_all
+
+AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
 
 # create categories
 preparatory = Category.create!(name: 'Preparatory')
@@ -34,13 +38,6 @@ Course.create(
   category_id: preparatory.id,
   name: 'C++ - Intermediate',
   description: 'In this course students further their understanding of the C++ programming language, applying it to the managed code environment, databases and Windows programming. In the first part of the course students use C++/CLI to create managed code. The course then covers designing, implementing and accessing databases to store large data sets. Students then implement Windows based programs using the Microsoft Foundation Classes (MFC). Students will learn the concepts of event-driven programming, message processing, and Windows program structure. Prerequisite: CS 131'
-)
-
-Course.create(
-  user_id: user.id,
-  category_id: preparatory.id,
-  name: 'Operating Systems',
-  description: 'This course examines basic operating system concepts and principles. The concepts include Operating Systems components, architecture, and management. Operating system management will examine process, memory, storage, and security management. Several exercises and hands-on activity reinforce the concepts and principles covered in the course. Course Entry Requirement: IS 306 or CS 306.'
 )
 
 Course.create(

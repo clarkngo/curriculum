@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user sign out process", type: :feature do
   scenario 'user sign out' do
+    
     # arrange
     user = create(:user)
 

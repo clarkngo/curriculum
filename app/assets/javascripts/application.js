@@ -18,4 +18,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require tether
-//= require_tree .
+//= require_directory .
+//= require_tree ./channels

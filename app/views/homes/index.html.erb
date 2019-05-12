@@ -1,27 +1,142 @@
 <br/>
- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%= image_tag 'carousel1.jpg', class: 'd-block w-100 h-450' %>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag 'carousel2.jpg', class: 'd-block w-100 h-450' %>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag 'carousel3.png', class: 'd-block w-100 h-450' %>
+<br/>
+<div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    
+    <!-- carousel inner -->
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <div class="row">
+        
+          <!-- 1st card -->
+          <div class="col-sm">
+            <div class="card center" style="height: 40rem; width: 40rem;">
+              <% if @course_latest.present? %>
+                <%= link_to course_path(@course_latest&.id) do %>
+                  <% if @course_latest&.photo_header? %>
+                    <%= image_tag @course_latest.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
+                  <% else %>
+                    <%= image_tag 'default-course-photo.jpg', class: 'card-img-top' %>
+                  <% end %>  
+
+                  <div class="card-body">
+                    <h3 class="card-title"><%= @course_latest&.name %></h3>
+                    <br/>
+                  <h4 class="card-title"><i><%= @course_latest&.category&.name %></i></h4>
+                    <br/>
+                    <p class="card-text long-text"><%= @course_latest&.description %></p>
+                    <div class="flex-container">
+                      <br/>
+                      <div class="card-text">
+                        <p>
+                          <i>
+                            Creator: 
+                            <% if @course_latest&.user.present? %>
+                              <% if @course_latest&.user.full_name.present? %>
+                                <%= @course_latest&.user.full_name %>
+                              <% else %>
+                                User
+                              <% end %>
+                            <% else %>
+                              Curriculum
+                            <% end %>
+                          </i>
+                        </p>
+                      </div>
+                      &nbsp;
+                    </div>
+                    <div class="float-left">
+                      <% if @course_latest&.user&.avatar.present? %>
+                        <%= image_tag @course_latest&.user&.avatar.thumb.url, class: 'profile-image'  %>
+                      <% else %>
+                        <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
+                      <% end %>                
+                    </div>         
+                  </div>
+                <% end %>
+              <%end %>
+            </div>  
+            <!-- end of 1st card -->
+          </div>
+          <!-- end of grid column small -->
+        </div>
+        <!-- end of row -->
+      </div>
+      <!-- end of carousel item active -->
+        
+
+      <% @courses_except_last.reverse_order.each do |course| %>
+        <div class="carousel-item">
+          <div class="row">
+        
+            <!-- card -->
+            <div class="col-sm">
+              <div class="card center" style="height: 40rem; width: 40rem;">
+                <%= link_to course_path(course.id) do %>
+                  <% if course.photo_header? %>
+                    <%= image_tag course.photo_header.url, class: 'card-img-top', alt: 'Card image cap' %>
+                  <% else %>
+                    <%= image_tag 'default-course-photo.jpg', class: 'card-img-top' %>
+                  <% end %>  
+                  <div class="card-body">
+                    <h3 class="card-title"><%= course.name %></h3>
+                    <br/>
+                    <h4 class="card-title"><i><%= course.category.name %></i></h4>
+                    <br/>
+                    <p class="card-text long-text"><%= course.description %></p>
+                    <div class="flex-container">
+                      <br/>
+                      <div class="card-text">
+                        <p>
+                          <i>
+                            Creator: 
+                            <% if course.user.present? %>
+                              <% if course.user.full_name.present? %>
+                                <%= course.user.full_name %>
+                              <% else %>
+                                User
+                              <% end %>
+                            <% else %>
+                              Curriculum
+                            <% end %>
+                          </i>
+                        </p>
+                      </div>
+                      &nbsp;
+                    </div>
+                    <div class="float-left">
+                      <% if course.user&.avatar.present? %>
+                        <%= image_tag course.user&.avatar.thumb.url, class: 'profile-image'  %>
+                      <% else %>
+                        <%= image_tag 'default-profile-picture-50x50.png', class: 'profile-image' %>  
+                      <% end %>                
+                    </div>         
+                  </div>
+                </div>
+              <% end %>  
+            </div>
+            <!-- end card -->
+          </div>
+          <!-- end of row -->
+        </div>
+        <!-- end of carousel item -->
+      <% end %>
+      
+      <!-- carousel button previous -->
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+
+      <!-- carousel button next -->
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+  <br/>
+  <br/>
+  <br/>
 </div>

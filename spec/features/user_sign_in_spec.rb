@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user sign in process", type: :feature do
   scenario 'user sign in' do
+    
     # arrange
     user = create(:user)
 

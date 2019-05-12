@@ -16,6 +16,7 @@
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+/public/uploads
 
 /node_modules
 /yarn-error.log
@@ -29,5 +30,8 @@
 # Ignore application configuration
 /config/application.yml
 
-# Ignore upload folders
+# Ignore public uploads
 /public/uploads
+
+# Ignore coveralls
+.coveralls.yml
