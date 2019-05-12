@@ -6,13 +6,17 @@ ruby '2.5.3'
 gem 'activeadmin',             '~> 1.4', '>= 1.4.3'
 
 gem 'bootsnap',                '>= 1.1.0', require: false
+
 gem 'bootstrap',               '~> 4.3.1'
+
 
 gem 'carrierwave',             '~> 1.3.1'
 gem 'coderay',                 '~> 1.1', '>= 1.1.2'
 gem 'coveralls',                           require: false
 
+
 gem 'devise',                  '~> 4.6.0'  
+
 
 gem 'faker',                   '~> 1.9.1'
 gem 'figaro',                  '~> 1.1.1'

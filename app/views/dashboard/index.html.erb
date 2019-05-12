@@ -1,91 +1,100 @@
-<!-- side bar menu --->
-<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical"><br/>
-<br/>
-  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-account" role="tab" aria-controls="v-pills-account" aria-selected="true">
-    Account
-  </a>
-  <a class="nav-link" id="v-pills-courses-tab" data-toggle="pill" href="#v-pills-courses" role="tab" aria-controls="v-pills-courses" aria-selected="false">
-    Courses&nbsp; &nbsp;
-    <span class="badge badge-light"><%= @courses.count if @courses.present? %></span>
-  </a>
-  <a class="nav-link" id="v-pills-comments-tab" data-toggle="pill" href="#v-pills-comments" role="tab" aria-controls="v-pills-comments" aria-selected="false">
-    Comments&nbsp; &nbsp;
-    <span class="badge badge-light"><%= @comments.count if @courses.present? %></span>
-  </a>
-</div>
+
+  <!-- side bar menu --->
+  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical"><br/>
+  <br/>
+    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-account" role="tab" aria-controls="v-pills-account" aria-selected="true">
+      Account
+    </a>
+    <a class="nav-link" id="v-pills-courses-tab" data-toggle="pill" href="#v-pills-courses" role="tab" aria-controls="v-pills-courses" aria-selected="false">
+      Courses&nbsp; &nbsp;
+      <span class="badge badge-light"><%= @courses.count if @courses.present? %></span>
+    </a>
+    <a class="nav-link" id="v-pills-comments-tab" data-toggle="pill" href="#v-pills-comments" role="tab" aria-controls="v-pills-comments" aria-selected="false">
+      Comments&nbsp; &nbsp;
+      <span class="badge badge-light"><%= @comments.count if @courses.present? %></span>
+    </a>
+  </div>
+
 <!-- end of side bar menu --->
 
 <% if user_signed_in? %>
 
 <br/>
 <br/>
-
 <div class="container">
-  <div class="tab-content" id="v-pills-tabContent">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-8">
+      <div class="tab-content" id="v-pills-tabContent">
 
-    <!-- Tab Account -->
-    <div class="tab-pane fade show active" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">  
-      <h1 class="text-center" style="color: white">My Account</h1>    
-      <br/>
-      <h2><%= link_to "Edit My Profile", edit_user_registration_path %></h2>
+        <!-- Tab Account -->
+        <div class="tab-pane fade show active" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">  
+          <h1 class="text-center" style="color: white">My Account</h1>    
+          <br/>
+          <h2><%= link_to "Edit My Profile", edit_user_registration_path %></h2>
+        </div>
+        <!-- end of Tab Account -->
+        
+        <!-- Tab Courses -->
+        <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-courses-tab">
+          <h1 class="text-center" style="color: white">List of Courses</h1>
+          <br/>
+          <% if @courses.empty? %>
+            <h2 class="hero-text">You have not created to any courses =)</h2>
+          <% else %>
+            <%= render 'courses/courses' %>
+          <% end %>    
+        </div>
+        <!-- end of Tab Courses -->
+        
+        <!-- Tab Comments -->
+        <div class="tab-pane fade" id="v-pills-comments" role="tabpanel" aria-labelledby="v-pills-comments-tab">
+          <h1 class="text-center" style="color: white">List of Comments</h1>
+          <br/>
+          <% if @comments.empty? %>
+            <h2 class="hero-text">You have not commented to any courses =)</h2>
+          <% else %>
+            <table class="table table-striped table-dark table-sm table-hover">
+              <thead> 
+                <tr>
+                  <th scope="col">Course</th>
+                  <th scope="col">Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @comments.each do |comment| %>
+                  <tr>
+                    <th>
+                      <%= link_to course_path(comment.course.id) do %>
+                        <% if comment.course.photo? %>
+                          <%= image_tag comment.course.photo.thumb.url, class: 'profile-image' %>
+                        <% else %>
+                          <%= image_tag 'default-course-photo-50x50.jpg', class: 'profile-image' %>
+                        <% end %>                  
+                      <% end %>
+                      <%= comment.course.name %>
+                    </th>
+                    <th>
+                      <br/>
+                      <%= link_to 'Delete', course_comment_path(comment.course, comment.id), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger btn-sm' %>
+                    </th>
+                    <th scope="row">
+                      <p><%= markdown(comment.message) %></p>
+                    </th>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+        <!-- end of Tab Comments -->
+          
+      </div>
+      <!-- end of class container --->
+    <% end %>
+    <!-- end of if user sign in conditional --->
+
     </div>
-    <!-- end of Tab Account -->
-    
-    <!-- Tab Courses -->
-    <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-courses-tab">
-      <h1 class="text-center" style="color: white">List of Courses</h1>
-      <br/>
-      <% if @courses.empty? %>
-        <h2 class="hero-text">You have not created to any courses =)</h2>
-      <% else %>
-        <%= render 'courses/courses' %>
-      <% end %>    
-    </div>
-    <!-- end of Tab Courses -->
-    
-    <!-- Tab Comments -->
-    <div class="tab-pane fade" id="v-pills-comments" role="tabpanel" aria-labelledby="v-pills-comments-tab">
-      <h1 class="text-center" style="color: white">List of Comments</h1>
-      <br/>
-      <% if @comments.empty? %>
-        <h2 class="hero-text">You have not commented to any courses =)</h2>
-      <% else %>
-        <table class="table table-striped table-dark table-sm table-hover">
-          <thead> 
-            <tr>
-              <th scope="col">Course</th>
-              <th scope="col">Comment</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @comments.each do |comment| %>
-              <tr>
-                <th>
-                  <%= link_to course_path(comment.course.id) do %>
-                    <% if comment.course.photo? %>
-                      <%= image_tag comment.course.photo.thumb.url, class: 'profile-image' %>
-                    <% else %>
-                      <%= image_tag 'default-course-photo-50x50.jpg', class: 'profile-image' %>
-                    <% end %>                  
-                  <% end %>
-                  <%= comment.course.name %>
-                </th>
-                <th>
-                  <br/>
-                  <%= link_to 'Delete', course_comment_path(comment.course, comment.id), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger btn-sm' %>
-                </th>
-                <th scope="row">
-                  <p><%= markdown(comment.message) %></p>
-                </th>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <% end %>
-    </div>
-    <!-- end of Tab Comments -->
-      
   </div>
-  <!-- end of class container --->
-<% end %>
-<!-- end of if user sign in conditional --->
+</div>
