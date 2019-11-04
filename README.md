@@ -14,6 +14,7 @@ This app is hosted on [Heroku](http://curriculum-clark-ngo.herokuapp.com)
 
 ## Schema
 ![Schema](schema.png "Schema")
+Made with [dbdiagram.io](https://dbdiagram.io/home)
 
 ## Features
 Admin panel
