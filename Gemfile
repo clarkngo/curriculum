@@ -14,7 +14,7 @@ gem 'carrierwave',             '~> 1.3.1'
 gem 'coderay',                 '~> 1.1', '>= 1.1.2'
 
 
-gem 'devise',                  '~> 4.6.0'  
+gem 'devise',                  '~> 4.7.1'  
 
 
 gem 'faker',                   '~> 1.9.1'
