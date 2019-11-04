@@ -12,6 +12,9 @@ This app is hosted on [Heroku](http://curriculum-clark-ngo.herokuapp.com)
 
 [![Curriculum App Demo](http://img.youtube.com/vi/K9HQQQge0sQ/0.jpg)](https://www.youtube.com/watch?v=K9HQQQge0sQ "Curriculum App Demo")
 
+## Schema
+![Schema](schema.png "Schema")
+
 ## Features
 Admin panel
 
@@ -118,7 +121,7 @@ aws:
 4) `Ctrl + x`, then `Ctrl + c` to exit.
 5) Share master key to team. Should not be pushed to repo.
 
-Common Gotcha: 
+Common Gotcha:
 ```
 'rescue in _decrypt': ActiveSupport::MessageEncryptor::InvalidMessage (ActiveSupport::MessageEncryptor::InvalidMessage)
 ```
