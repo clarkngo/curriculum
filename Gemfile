@@ -25,7 +25,7 @@ gem 'rails',                   '~> 5.2.2'
 
 gem 'jquery-rails',            '~> 4.3.3'
 
-gem 'mini_magick',             '~> 4.9.2'
+gem 'mini_magick',             '~> 4.9.4'
 
 gem 'pg',                      '>= 0.18', '< 2.0'
 gem 'popper_js',               '< 2', '>= 1.12.9'
