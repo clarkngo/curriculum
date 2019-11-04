@@ -13,6 +13,7 @@ This app is hosted on [Heroku](http://curriculum-clark-ngo.herokuapp.com)
 [![Curriculum App Demo](http://img.youtube.com/vi/K9HQQQge0sQ/0.jpg)](https://www.youtube.com/watch?v=K9HQQQge0sQ "Curriculum App Demo")
 
 ## Schema
+![Schema](schema.png "Schema")
 
 ## Features
 Admin panel
