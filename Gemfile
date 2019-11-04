@@ -37,7 +37,7 @@ gem 'redis',                   '~> 4.1'
 
 gem 'sass-rails',              '~> 5.0'
 
-gem 'simple_form',             '~> 4.1.0'
+gem 'simple_form',             '~> 5.0.0'
 
 gem 'turbolinks',              '~> 5'
 
