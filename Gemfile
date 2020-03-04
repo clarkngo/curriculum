@@ -29,7 +29,7 @@ gem 'mini_magick',             '~> 4.9.2'
 
 gem 'pg',                      '>= 0.18', '< 2.0'
 gem 'popper_js',               '< 2', '>= 1.12.9'
-gem 'puma',                    '~> 3.11'
+gem 'puma',                    '~> 3.12'
 gem 'pundit',                  '~> 2.0',  '>= 2.0.1'
 
 gem 'redcarpet',               '~> 3.4'
